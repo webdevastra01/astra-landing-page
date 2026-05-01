@@ -13,6 +13,7 @@ import Services from "./components/Services";
 import VisionExpansion from "./components/VisionExpansion";
 import WhyAstra from "./components/WhyAstra";
 import { SEO } from "./components/SEO";
+import HowItWorks from "./components/HowItWorks";
 
 // Landing page component — all your homepage sections
 function LandingPage() {
@@ -39,6 +40,7 @@ function LandingPage() {
       <Founder />
       <SystemsDriven />
       <Services />
+      <HowItWorks/>
       <People />
       <WhyAstra />
       <InsuranceCapability />

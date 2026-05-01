@@ -23,6 +23,7 @@ const interestOptions = [
   { value: "consulting", label: "Business Consulting" },
   { value: "technology", label: "Technology Solutions" },
   { value: "media", label: "Media & Content" },
+  { value: "call", label: "Discovery Call Booking" },
   { value: "other", label: "Other" },
 ];
 
