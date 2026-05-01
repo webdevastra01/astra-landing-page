@@ -128,12 +128,13 @@ const Footer: React.FC = () => {
             <div className="footer__brand-header">
               <h2 className="footer__brand-name">Astra Group of Companies</h2>
               <span className="footer__brand-tagline">
-                Integrated Business Solutions
+                Offshore Execution Partner
               </span>
             </div>
             <p className="footer__brand-description">
-              End-to-end support in Sales, Marketing, HR, Finance, Technology,
-              and Operations for start-ups, SMEs, and enterprise partners.
+              Astra Group of Companies is a global execution partner helping businesses scale
+              through structured offshore teams across sales, marketing, HR,
+              finance, technology, and operations.
             </p>
             <div className="footer__brand-contact">
               <a
