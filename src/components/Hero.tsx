@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, useCallback } from "react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Users, Target, TrendingUp } from "lucide-react";
 import "../styles/Hero.css";
 import { Helmet } from "react-helmet-async";
 
@@ -75,7 +75,6 @@ export default function Hero() {
     ctx.clearRect(0, 0, rect.width, rect.height);
 
     particlesRef.current.forEach((particle, i) => {
-      // Mouse interaction
       const dx = mouseRef.current.x - particle.x;
       const dy = mouseRef.current.y - particle.y;
       const dist = Math.sqrt(dx * dx + dy * dy);
@@ -87,28 +86,22 @@ export default function Hero() {
         particle.speedY -= (dy / dist) * force * 0.02;
       }
 
-      // Update position
       particle.x += particle.speedX;
       particle.y += particle.speedY;
-
-      // Damping
       particle.speedX *= 0.99;
       particle.speedY *= 0.99;
 
-      // Boundary wrap
       if (particle.x < 0) particle.x = rect.width;
       if (particle.x > rect.width) particle.x = 0;
       if (particle.y < 0) particle.y = rect.height;
       if (particle.y > rect.height) particle.y = 0;
 
-      // Draw particle
       ctx.beginPath();
       ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
       ctx.fillStyle = particle.color;
       ctx.globalAlpha = particle.opacity;
       ctx.fill();
 
-      // Draw connections
       particlesRef.current.slice(i + 1).forEach((other) => {
         const cdx = particle.x - other.x;
         const cdy = particle.y - other.y;
@@ -161,7 +154,7 @@ export default function Hero() {
     if (ecosystem) ecosystem.scrollIntoView({ behavior: "smooth" });
   };
 
-  const handleWatchVideo = () => {
+  const handleWhyAstra = () => {
     const why = document.querySelector("#capabilities");
     if (why) why.scrollIntoView({ behavior: "smooth" });
   };
@@ -170,11 +163,11 @@ export default function Hero() {
     <>
       <Helmet>
         <title>
-          Astra Group of Companies | Integrated Business Solutions Philippines
+          Astra Group | Offshore Execution Teams That Deliver Real Results
         </title>
         <meta
           name="description"
-          content="End-to-end support across sales, marketing, HR, finance, technology, and operations."
+          content="Astra Group builds and manages offshore execution teams across sales, marketing, HR, finance, technology, and operations. One partner. Full execution. Real results."
         />
       </Helmet>
       <section
@@ -184,18 +177,11 @@ export default function Hero() {
       >
         {/* Layered background system */}
         <div className="hero__bg" aria-hidden="true">
-          {/* Deep gradient base */}
           <div className="hero__bg-deep" />
-
-          {/* Animated mesh orbs */}
           <div className="hero__bg-orb hero__bg-orb--1" />
           <div className="hero__bg-orb hero__bg-orb--2" />
           <div className="hero__bg-orb hero__bg-orb--3" />
-
-          {/* Particle canvas */}
           <canvas ref={canvasRef} className="hero__bg-canvas" />
-
-          {/* Floating star constellation */}
           <div className="hero__bg-stars">
             <div className="hero__bg-star-cluster">
               <svg
@@ -232,36 +218,35 @@ export default function Hero() {
               />
             </svg>
           </div>
-
-          {/* Light rays */}
           <div className="hero__bg-rays" />
-
-          {/* Glass overlay */}
           <div className="hero__bg-glass" />
         </div>
 
         <div className="container hero__inner">
-          {/* Floating badge */}
+          {/* Badge */}
           <div className="hero__badge">
             <span className="hero__badge-pulse" />
-            <span>Integrated Business Solutions</span>
+            <span>Offshore Execution Partner</span>
           </div>
 
           {/* Headline */}
           <h1 id="hero-title" className="hero__title">
-            Astra Group
-            <span className="hero__title-accent"> of Companies</span>
+            We Build the Teams
+            <br />
+            That <span className="hero__title-accent">Drive Your Business</span>
           </h1>
 
           {/* Subheadline */}
           <p className="hero__subtitle">
-            Your Partner in Every Business Journey
+            Structured offshore execution across sales, marketing, HR, finance,
+            technology, and operations.
           </p>
 
           {/* Description */}
           <p className="hero__description">
-            End-to-end support across sales, marketing, HR, finance, technology,
-            and operations for startups, SMEs, and enterprise partners.
+            Astra Group combines skilled talent, proven systems, and hands-on
+            management to deliver measurable results. More than a service
+            provider; we act as your execution partner.
           </p>
 
           {/* CTA Group */}
@@ -278,30 +263,39 @@ export default function Hero() {
 
             <button
               className="hero__btn hero__btn--secondary"
-              onClick={handleWatchVideo}
+              onClick={handleWhyAstra}
               type="button"
             >
-              Why choose Astra?
+              Why Choose Astra?
             </button>
           </div>
 
-          {/* Stats */}
-          {/* <div className="hero__stats">
-          <div className="hero__stat">
-            <span className="hero__stat-number">8</span>
-            <span className="hero__stat-label">Business Units</span>
+          {/* Value Props */}
+          <div className="hero__values">
+            <div className="hero__value">
+              <div className="hero__value-icon">
+                <Users size={20} aria-hidden="true" />
+              </div>
+              <span className="hero__value-text">Skilled Talent</span>
+            </div>
+            <div className="hero__value">
+              <div className="hero__value-icon">
+                <Target size={20} aria-hidden="true" />
+              </div>
+              <span className="hero__value-text">Proven Systems</span>
+            </div>
+            <div className="hero__value">
+              <div className="hero__value-icon">
+                <TrendingUp size={20} aria-hidden="true" />
+              </div>
+              <span className="hero__value-text">Measurable Results</span>
+            </div>
           </div>
-          <div className="hero__stat-divider" />
-          <div className="hero__stat">
-            <span className="hero__stat-number">500+</span>
-            <span className="hero__stat-label">Partners</span>
-          </div>
-          <div className="hero__stat-divider" />
-          <div className="hero__stat">
-            <span className="hero__stat-number">15+</span>
-            <span className="hero__stat-label">Years</span>
-          </div>
-        </div> */}
+
+          {/* Tagline */}
+          <p className="hero__tagline">
+            One partner. Full execution. Real results.
+          </p>
         </div>
 
         {/* Scroll indicator */}
