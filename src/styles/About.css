@@ -12,7 +12,7 @@
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
-  max-width: 1200px;
+  max-width: 1480px;
   height: 400px;
   background: radial-gradient(
     ellipse at center,
@@ -25,6 +25,9 @@
 .about__inner {
   position: relative;
   z-index: 1;
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
 }
 
 /* ========================================
@@ -71,7 +74,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 3rem;
-  max-width: 1000px;
+  max-width: 1280px;
   margin: 0 auto 4rem;
   padding: 2.5rem;
   background: #ffffff;
@@ -124,7 +127,7 @@
   align-items: center;
   gap: 1rem;
   margin-bottom: 2rem;
-  max-width: 1000px;
+  max-width: 1280px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -145,14 +148,14 @@
 }
 
 /* ========================================
-   CAPABILITIES GRID
+   CAPABILITIES GRID - 5 CARDS FULL WIDTH
    ======================================== */
 
 .about__grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  max-width: 1000px;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.25rem;
+  max-width: 1280px;
   margin: 0 auto 4rem;
 }
 
@@ -166,6 +169,8 @@
   cursor: default;
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .about__card::before {
@@ -210,6 +215,7 @@
   justify-content: center;
   color: #2a3a9d;
   transition: all 200ms ease;
+  flex-shrink: 0;
 }
 
 .about__card:hover .about__icon {
@@ -219,7 +225,7 @@
 }
 
 .about__division {
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -227,10 +233,11 @@
   padding: 0.25rem 0.625rem;
   background: rgba(59, 130, 246, 0.08);
   border-radius: 9999px;
+  flex-shrink: 0;
 }
 
 .about__card-title {
-  font-size: 1.0625rem;
+  font-size: 1rem;
   font-weight: 700;
   color: #0f172a;
   margin-bottom: 0.625rem;
@@ -242,6 +249,7 @@
   line-height: 1.6;
   color: #64748b;
   margin: 0 0 1.25rem;
+  flex: 1;
 }
 
 .about__card-link {
@@ -254,6 +262,7 @@
   opacity: 0;
   transform: translateX(-4px);
   transition: all 200ms ease;
+  margin-top: auto;
 }
 
 .about__card:hover .about__card-link {
@@ -269,7 +278,7 @@
   text-align: center;
   padding-top: 2rem;
   border-top: 1px solid #e2e8f0;
-  max-width: 1000px;
+  max-width: 1280px;
   margin: 0 auto;
 }
 
@@ -348,14 +357,22 @@
 /* ========================================
    RESPONSIVE
    ======================================== */
+@media (max-width: 1200px) {
+  .about__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 @media (max-width: 1024px) {
   .about__grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
   }
 
   .about__narrative {
     gap: 2rem;
     padding: 2rem;
+    max-width: 100%;
   }
 }
 
@@ -380,9 +397,10 @@
   }
 
   .about__grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
     margin-bottom: 3rem;
+    max-width: 100%;
   }
 
   .about__card {
@@ -406,6 +424,10 @@
 
   .about__narrative {
     padding: 1.25rem;
+  }
+
+  .about__grid {
+    grid-template-columns: 1fr;
   }
 }
 

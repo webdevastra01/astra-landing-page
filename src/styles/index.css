@@ -95,7 +95,7 @@
   --transition-base: 200ms ease;
 
   /* Layout */
-  --container-xl: 1280px;
+  --container-xl: 1480px;
 
   /* Base Styles */
   font-family: var(--font-sans);

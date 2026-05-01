@@ -2,10 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import {
   TrendingUp,
   Megaphone,
-  Truck,
   Users,
-  Cpu,
   ShieldCheck,
+  Cpu,
   ArrowRight,
 } from "lucide-react";
 import "../styles/About.css";
@@ -13,45 +12,38 @@ import "../styles/About.css";
 const capabilities = [
   {
     icon: TrendingUp,
-    title: "Sales & Revenue",
+    title: "Sales Execution",
     division: "Avaris",
     description:
-      "Generate leads, close deals, and drive revenue growth with dedicated sales teams built for your market.",
+      "Lead generation, prospecting, outreach, and pipeline management to keep your revenue engine running.",
   },
   {
     icon: Megaphone,
-    title: "Marketing & Demand",
+    title: "Marketing Support",
     division: "Axis",
     description:
-      "Build brand presence and create qualified demand through strategic digital and traditional marketing execution.",
+      "Content, campaigns, social media, and brand messaging to attract and engage your market.",
   },
   {
     icon: Users,
-    title: "HR & Talent",
+    title: "HR & Recruitment",
     division: "Ascend",
     description:
-      "Attract, onboard, and retain top talent with structured HR processes and organizational development.",
+      "Hiring, onboarding, and people management so you scale with the right talent in place.",
   },
   {
     icon: ShieldCheck,
-    title: "Finance & Compliance",
-    division: "Ardent",
+    title: "Finance & Admin",
+    division: "Astra Finance",
     description:
-      "Manage financial operations, reporting, and compliance with precision and full accountability.",
+      "Invoicing, reporting, payroll, and documentation to keep operations organized and controlled.",
   },
   {
     icon: Cpu,
-    title: "Technology & Systems",
+    title: "Technology & Automation",
     division: "Aivox",
     description:
-      "Enable your business with modern technology infrastructure, automation, and digital transformation.",
-  },
-  {
-    icon: Truck,
-    title: "Operations & Support",
-    division: "Astra Ops",
-    description:
-      "Streamline back-office operations, logistics, and day-to-day execution to keep your business running smoothly.",
+      "Website development, CRM setup, workflow automation, and system integration.",
   },
 ] as const;
 
@@ -113,7 +105,7 @@ export default function About() {
             <p className="about__narrative-text">
               Through our specialized divisions — <strong>Avaris</strong> for
               Sales, <strong>Axis</strong> for Marketing,{" "}
-              <strong>Ascend</strong> for HR, <strong>Ardent</strong> for
+              <strong>Ascend</strong> for HR, <strong>Astra Finance</strong> for
               Finance, and <strong>Aivox</strong> for Technology — we deliver
               integrated solutions under one system, ensuring consistency,
               accountability, and results.
@@ -126,7 +118,7 @@ export default function About() {
           </div>
         </div>
 
-        {/* Capabilities Grid */}
+        {/* Capabilities Grid - 5 cards, full width */}
         <div className="about__section-label">
           <span>Our Divisions</span>
           <div className="about__section-line" />
@@ -164,7 +156,7 @@ export default function About() {
         {/* Bottom CTA */}
         <div className="about__cta">
           <p className="about__cta-text">
-            One partner. Six functions. Full execution.
+            One partner. Five functions. Full execution.
           </p>
           <a href="#ecosystem" className="about__cta-btn">
             <span>Explore the Ecosystem</span>
