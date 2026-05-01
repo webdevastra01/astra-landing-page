@@ -144,10 +144,10 @@ export default function About() {
                 <p className="about__card-description">
                   {capability.description}
                 </p>
-                <div className="about__card-link">
+                {/* <div className="about__card-link">
                   <span>Learn more</span>
                   <ArrowRight size={14} aria-hidden="true" />
-                </div>
+                </div> */}
               </div>
             );
           })}

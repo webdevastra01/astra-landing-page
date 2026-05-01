@@ -9,7 +9,7 @@ const navLinks = [
   { label: "Founder", href: "#founder" },
   { label: "Capabilities", href: "#capabilities" },
   { label: "Vision", href: "#vision" },
-  { label: "Contact", href: "#contact" },
+  { label: "Contact", href: "#footer" },
 ] as const;
 
 export default function Navbar() {

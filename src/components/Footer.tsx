@@ -113,6 +113,7 @@ const Footer: React.FC = () => {
 
   return (
     <footer
+      id="footer"
       ref={footerRef}
       className={`footer ${isVisible ? "footer--visible" : ""}`}
       aria-label="Astra Group of Companies footer"
@@ -132,9 +133,9 @@ const Footer: React.FC = () => {
               </span>
             </div>
             <p className="footer__brand-description">
-              Astra Group of Companies is a global execution partner helping businesses scale
-              through structured offshore teams across sales, marketing, HR,
-              finance, technology, and operations.
+              Astra Group of Companies is a global execution partner helping
+              businesses scale through structured offshore teams across sales,
+              marketing, HR, finance, technology, and operations.
             </p>
             <div className="footer__brand-contact">
               <a

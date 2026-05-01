@@ -156,7 +156,9 @@ export default function Hero() {
 
   const handleWhyAstra = () => {
     const why = document.querySelector("#capabilities");
-    if (why) why.scrollIntoView({ behavior: "smooth" });
+    if (why) {
+      why.scrollIntoView({ behavior: "auto" });
+    }
   };
 
   return (

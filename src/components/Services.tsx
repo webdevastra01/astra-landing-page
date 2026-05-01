@@ -11,6 +11,7 @@ import {
   Cpu,
 } from "lucide-react";
 import "../styles/Services.css";
+import LeadForm from "./LeadForm";
 
 interface Service {
   id: string;
@@ -120,6 +121,7 @@ export default function Services() {
   const [isVisible, setIsVisible] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [formOpen, setFormOpen] = useState(false);
   const autoPlayRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
@@ -154,14 +156,11 @@ export default function Services() {
     };
   }, [isAutoPlaying, isVisible]);
 
-  const goTo = useCallback(
-    (index: number) => {
-      setActiveIndex(index);
-      setIsAutoPlaying(false);
-      setTimeout(() => setIsAutoPlaying(true), 10000);
-    },
-    [],
-  );
+  const goTo = useCallback((index: number) => {
+    setActiveIndex(index);
+    setIsAutoPlaying(false);
+    setTimeout(() => setIsAutoPlaying(true), 10000);
+  }, []);
 
   const goNext = useCallback(() => {
     goTo((activeIndex + 1) % services.length);
@@ -273,9 +272,7 @@ export default function Services() {
 
             {/* Right: Content */}
             <div className="services__carousel-content">
-              <h3 className="services__carousel-title">
-                {activeService.name}
-              </h3>
+              <h3 className="services__carousel-title">{activeService.name}</h3>
               <p className="services__carousel-tagline">
                 {activeService.tagline}
               </p>
@@ -366,12 +363,20 @@ export default function Services() {
           <p className="services__footer-text">
             Need multiple functions? We integrate them under one system.
           </p>
-          <a href="#contact" className="services__footer-btn">
+          <a
+            className="services__footer-btn"
+            onClick={(e) => {
+              setFormOpen(true);
+              e.preventDefault();
+            }}
+          >
             <span>Talk to Us About Your Needs</span>
             <ArrowRight size={18} aria-hidden="true" />
           </a>
         </div>
       </div>
+
+      <LeadForm isOpen={formOpen} onClose={() => setFormOpen(false)} />
     </section>
   );
 }
