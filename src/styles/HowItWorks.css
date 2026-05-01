@@ -161,7 +161,6 @@
   max-width: 600px;
   width: 100%;
   padding: 0 2rem;
-  margin-left: 8rem; /* Space for progress indicator */
 }
 
 .scroll-content__header {
@@ -247,6 +246,7 @@
   font-size: 5rem;
   font-weight: 900;
   line-height: 1;
+  margin-top: 6rem;
   margin-bottom: 1rem;
   opacity: 0.3;
   transition: all 0.5s ease;
