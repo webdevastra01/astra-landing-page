@@ -149,7 +149,7 @@ const Footer: React.FC = () => {
               </a>
               <span className="footer__contact-text">
                 <MapPin size={16} strokeWidth={2} />
-                <span>Mindanao, Philippines</span>
+                <span>Davao City, Philippines</span>
               </span>
             </div>
           </div>
