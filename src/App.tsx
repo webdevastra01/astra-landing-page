@@ -14,6 +14,7 @@ import VisionExpansion from "./components/VisionExpansion";
 import WhyAstra from "./components/WhyAstra";
 import { SEO } from "./components/SEO";
 import HowItWorks from "./components/HowItWorks";
+import FinalCTA from "./components/FinalCTA";
 
 // Landing page component — all your homepage sections
 function LandingPage() {
@@ -45,6 +46,7 @@ function LandingPage() {
       <WhyAstra />
       <InsuranceCapability />
       <VisionExpansion />
+      <FinalCTA/>
     </>
   );
 }
