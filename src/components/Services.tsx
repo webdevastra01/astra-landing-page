@@ -9,6 +9,8 @@ import {
   Users,
   ShieldCheck,
   Cpu,
+  Home,
+  Shield,
 } from "lucide-react";
 import "../styles/Services.css";
 import LeadForm from "./LeadForm";
@@ -23,6 +25,7 @@ interface Service {
   divisionUrl?: string;
   color: string;
   icon: React.ElementType;
+  logo?: string;
 }
 
 const services: Service[] = [
@@ -39,10 +42,11 @@ const services: Service[] = [
       "CRM management",
       "Follow-ups and pipeline tracking",
     ],
-    division: "Avaris",
+    division: "Avaris Sales Solutions",
     divisionUrl: "https://avarissalessolutions.vercel.app/",
-    color: "#2A3A9D",
+    color: "#E31B23",
     icon: TrendingUp,
+    logo: "/avaris-logo.png",
   },
   {
     id: "marketing",
@@ -57,10 +61,11 @@ const services: Service[] = [
       "Basic ads management",
       "Brand and messaging support",
     ],
-    division: "Axis",
+    division: "Axis Marketing Solutions",
     divisionUrl: "https://axismarketingsolutions-virid.vercel.app/",
-    color: "#3B4FB8",
+    color: "#631090",
     icon: Megaphone,
+    logo: "/axis-logo.png",
   },
   {
     id: "hr",
@@ -75,10 +80,11 @@ const services: Service[] = [
       "Attendance and admin tracking",
       "HR process support",
     ],
-    division: "Ascend",
+    division: "Ascend HR Solutions",
     divisionUrl: "https://web.facebook.com/wehear.ascend",
-    color: "#10B981",
+    color: "#1AD3F2",
     icon: Users,
+    logo: "/ascend-logo.png",
   },
   {
     id: "finance",
@@ -93,9 +99,10 @@ const services: Service[] = [
       "Payroll assistance",
       "Documentation and admin support",
     ],
-    division: "Ardent",
-    color: "#6366F1",
+    division: "Astra Finance",
+    color: "#2A3A9D",
     icon: ShieldCheck,
+    logo: "/astra-logo.png",
   },
   {
     id: "tech",
@@ -110,9 +117,58 @@ const services: Service[] = [
       "System integration",
       "Basic technical support",
     ],
-    division: "Aivox",
-    color: "#0EA5E9",
+    division: "AivoxTech Solutions",
+    color: "#0e5f29",
     icon: Cpu,
+  },
+];
+
+interface Partner {
+  id: string;
+  name: string;
+  tagline: string;
+  description: string;
+  offerings: string[];
+  highlight: string;
+  color: string;
+  icon: React.ElementType;
+  websiteUrl?: string;
+  facebookUrl?: string;
+  logo?: string;
+}
+
+const partners: Partner[] = [
+  {
+    id: "axial",
+    name: "Axial",
+    tagline: "Real Estate Services",
+    description:
+      "Helping families and investors get the right property faster. Residential for steady progress today, and strategic land for big wins tomorrow.",
+    offerings: [
+      "Residential — condos and house-and-lots ready for quick move-in, with financing via bank or Pag-IBIG",
+      "Strategic Land — raw, agricultural, or commercial sites for long-term growth and high-value opportunities",
+      "Faster matching, easier paperwork, transparent process",
+    ],
+    highlight: "Real Estate",
+    color: "#059669",
+    icon: Home,
+    websiteUrl: "https://axialsite.com",
+    facebookUrl: "https://facebook.com/axial",
+    logo: "/axial-logo.png",
+  },
+  {
+    id: "astria",
+    name: "ASTRIA",
+    tagline: "Insurance Solutions",
+    description:
+      "Comprehensive insurance advisory and coverage solutions for individuals and businesses. ASTRIA connects you with the right protection for every stage of growth.",
+    offerings: ["Life insurance", "Non-life insurance", "Insurance advisory"],
+    highlight: "Insurance",
+    color: "#00787C",
+    icon: Shield,
+    websiteUrl: "https://astria.com",
+    facebookUrl: "https://facebook.com/astria",
+    logo: "/astria-logo.png",
   },
 ];
 
@@ -144,7 +200,6 @@ export default function Services() {
     return () => observer.disconnect();
   }, []);
 
-  // Auto-play
   useEffect(() => {
     if (isAutoPlaying && isVisible) {
       autoPlayRef.current = setInterval(() => {
@@ -170,7 +225,6 @@ export default function Services() {
     goTo((activeIndex - 1 + services.length) % services.length);
   }, [activeIndex, goTo]);
 
-  // Touch handlers
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;
   };
@@ -219,7 +273,6 @@ export default function Services() {
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
-          {/* Navigation Arrows */}
           <button
             className="services__arrow services__arrow--prev"
             onClick={goPrev}
@@ -237,21 +290,31 @@ export default function Services() {
             <ChevronRight size={24} strokeWidth={2} />
           </button>
 
-          {/* Main Card */}
           <div className="services__carousel-card">
-            {/* Left: Visual Identity */}
             <div
               className="services__carousel-visual"
               style={{ background: `${activeService.color}08` }}
             >
               <div
-                className="services__carousel-icon"
+                className={`services__carousel-icon ${
+                  activeService.logo ? "services__carousel-icon--logo" : ""
+                }`}
                 style={{
-                  background: activeService.color,
+                  background: activeService.logo
+                    ? "white"
+                    : activeService.color,
                   boxShadow: `0 0 40px ${activeService.color}40`,
                 }}
               >
-                <ActiveIcon size={32} strokeWidth={1.5} color="white" />
+                {activeService.logo ? (
+                  <img
+                    src={activeService.logo}
+                    alt={`${activeService.division} logo`}
+                    className="services__carousel-logo"
+                  />
+                ) : (
+                  <ActiveIcon size={32} strokeWidth={1.5} color="white" />
+                )}
               </div>
               <span
                 className="services__carousel-number"
@@ -270,7 +333,6 @@ export default function Services() {
               </div>
             </div>
 
-            {/* Right: Content */}
             <div className="services__carousel-content">
               <h3 className="services__carousel-title">{activeService.name}</h3>
               <p className="services__carousel-tagline">
@@ -320,14 +382,12 @@ export default function Services() {
               )}
             </div>
 
-            {/* Accent border */}
             <div
               className="services__carousel-accent"
               style={{ background: activeService.color }}
             />
           </div>
 
-          {/* Dots Navigation */}
           <div className="services__dots">
             {services.map((service, index) => (
               <button
@@ -346,7 +406,6 @@ export default function Services() {
             ))}
           </div>
 
-          {/* Progress Bar */}
           <div className="services__progress">
             <div
               className="services__progress-bar"
@@ -355,6 +414,129 @@ export default function Services() {
                 background: activeService.color,
               }}
             />
+          </div>
+        </div>
+
+        {/* Partner Services */}
+        <div className="services__partners">
+          <div className="services__partners-header">
+            <span className="services__partners-label">Partner Brands</span>
+            <h3 className="services__partners-title">
+              Also Part of{" "}
+              <span className="services__partners-title-accent">
+                the Astra Group
+              </span>
+            </h3>
+          </div>
+
+          <div className="services__partners-grid">
+            {partners.map((partner) => {
+              const PartnerIcon = partner.icon;
+              return (
+                <div key={partner.id} className="partner-card">
+                  <div
+                    className="partner-card__visual"
+                    style={{ background: `${partner.color}08` }}
+                  >
+                    <div
+                      className={`partner-card__icon ${
+                        partner.logo ? "partner-card__icon--logo" : ""
+                      }`}
+                      style={{
+                        background: partner.logo ? "white" : partner.color,
+                        boxShadow: `0 0 40px ${partner.color}40`,
+                      }}
+                    >
+                      {partner.logo ? (
+                        <img
+                          src={partner.logo}
+                          alt={`${partner.name} logo`}
+                          className="partner-card__logo"
+                        />
+                      ) : (
+                        <PartnerIcon
+                          size={28}
+                          strokeWidth={1.5}
+                          color="white"
+                        />
+                      )}
+                    </div>
+                    <span
+                      className="partner-card__highlight"
+                      style={{
+                        background: `${partner.color}15`,
+                        color: partner.color,
+                      }}
+                    >
+                      {partner.highlight}
+                    </span>
+                  </div>
+
+                  <div className="partner-card__content">
+                    <div className="partner-card__meta">
+                      <h4 className="partner-card__name">{partner.name}</h4>
+                      <span className="partner-card__tagline">
+                        {partner.tagline}
+                      </span>
+                    </div>
+
+                    <p className="partner-card__description">
+                      {partner.description}
+                    </p>
+
+                    <ul className="partner-card__offerings">
+                      {partner.offerings.map((item) => (
+                        <li key={item} className="partner-card__offering">
+                          <span
+                            className="partner-card__dot"
+                            style={{ background: partner.color }}
+                          />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="partner-card__actions">
+                      {partner.websiteUrl && (
+                        <a
+                          href={partner.websiteUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="partner-card__btn"
+                          style={{
+                            borderColor: `${partner.color}40`,
+                            color: partner.color,
+                          }}
+                        >
+                          Visit Website
+                          <ExternalLink size={14} />
+                        </a>
+                      )}
+
+                      {partner.facebookUrl && (
+                        <a
+                          href={partner.facebookUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="partner-card__btn"
+                          style={{
+                            borderColor: `${partner.color}40`,
+                            color: partner.color,
+                          }}
+                        >
+                          Facebook Page
+                          <ExternalLink size={14} />
+                        </a>
+                      )}
+                    </div>
+                  </div>
+
+                  <div
+                    className="partner-card__accent"
+                    style={{ background: partner.color }}
+                  />
+                </div>
+              );
+            })}
           </div>
         </div>
 
