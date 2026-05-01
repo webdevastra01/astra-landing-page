@@ -1,12 +1,12 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   Check,
   X,
   ArrowRight,
-  Building2,
+  Layers,
   Users,
-  Settings,
-  Shield,
+  TrendingUp,
+  BarChart3,
 } from "lucide-react";
 import "../styles/WhyAstra.css";
 
@@ -17,20 +17,68 @@ interface ComparisonItem {
 }
 
 const comparisonItems: ComparisonItem[] = [
-  { label: "Limited operational involvement", traditional: true, astra: false },
-  { label: "Fragmented execution", traditional: true, astra: false },
-  { label: "Single-service focus", traditional: true, astra: false },
-  { label: "Built by business operators", traditional: false, astra: true },
-  { label: "System-driven operations", traditional: false, astra: true },
   {
-    label: "Centralized strategy + execution",
+    label: "Hire multiple vendors per function",
+    traditional: true,
+    astra: false,
+  },
+  {
+    label: "Self-managed, inconsistent output",
+    traditional: true,
+    astra: false,
+  },
+  {
+    label: "Short-term projects, no continuity",
+    traditional: true,
+    astra: false,
+  },
+  { label: "Vague reporting, unclear ROI", traditional: true, astra: false },
+  {
+    label: "One partner across all functions",
     traditional: false,
     astra: true,
   },
-  { label: "Integrated multi-service model", traditional: false, astra: true },
+  {
+    label: "Trained teams with active management",
+    traditional: false,
+    astra: true,
+  },
+  { label: "Systems built to scale with you", traditional: false, astra: true },
+  {
+    label: "Clear KPIs and regular reporting",
+    traditional: false,
+    astra: true,
+  },
 ];
 
-const WhyAstra: React.FC = () => {
+const pillars = [
+  {
+    icon: Layers,
+    title: "End-to-End Execution",
+    description:
+      "One partner handling sales, marketing, HR, finance, technology, and operations — fully integrated under one system.",
+  },
+  {
+    icon: Users,
+    title: "Structured Teams",
+    description:
+      "Not freelancers. Trained, managed, and performance-driven teams that operate as an extension of your business.",
+  },
+  {
+    icon: TrendingUp,
+    title: "Scalable Systems",
+    description:
+      "Built to grow with your business. Processes and infrastructure that expand as your operations expand.",
+  },
+  {
+    icon: BarChart3,
+    title: "Results Focused",
+    description:
+      "Clear KPIs, transparent reporting, and accountability at every stage of execution.",
+  },
+] as const;
+
+export default function WhyAstra() {
   const sectionRef = useRef<HTMLElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -42,7 +90,7 @@ const WhyAstra: React.FC = () => {
           observer.disconnect();
         }
       },
-      { threshold: 0.15 },
+      { threshold: 0.1 },
     );
 
     if (sectionRef.current) {
@@ -54,30 +102,34 @@ const WhyAstra: React.FC = () => {
 
   return (
     <section
-    id="capabilities"
+      id="capabilities"
       ref={sectionRef}
       className={`why-astra ${isVisible ? "why-astra--visible" : ""}`}
       aria-labelledby="why-astra-title"
     >
-      <div className="why-astra__container">
+      <div className="why-astra__inner">
+        {/* Header */}
         <div className="why-astra__header">
           <span className="why-astra__label">Why Astra?</span>
           <h2 id="why-astra-title" className="why-astra__title">
-            The Astra Difference
+            One Partner.
+            <span className="why-astra__title-accent"> Full Execution.</span>
           </h2>
           <p className="why-astra__description">
-            Astra bridges strategy and execution through integrated teams,
-            structured systems, and multi-industry experience.
+            Most firms sell you services. We build and manage the teams that
+            execute them — with structure, accountability, and measurable
+            results.
           </p>
         </div>
 
+        {/* Comparison Table */}
         <div className="why-astra__comparison">
           <div className="why-astra__column why-astra__column--traditional">
             <div className="why-astra__column-header">
               <div className="why-astra__column-icon why-astra__column-icon--traditional">
-                <X size={24} strokeWidth={2.5} />
+                <X size={22} strokeWidth={2.5} />
               </div>
-              <h3 className="why-astra__column-title">Traditional Agencies</h3>
+              <h3 className="why-astra__column-title">Typical Providers</h3>
             </div>
             <ul className="why-astra__list">
               {comparisonItems
@@ -86,10 +138,10 @@ const WhyAstra: React.FC = () => {
                   <li
                     key={item.label}
                     className="why-astra__list-item"
-                    style={{ transitionDelay: `${index * 100}ms` }}
+                    style={{ transitionDelay: `${index * 80}ms` }}
                   >
                     <span className="why-astra__list-icon why-astra__list-icon--negative">
-                      <X size={18} strokeWidth={2.5} />
+                      <X size={16} strokeWidth={2.5} />
                     </span>
                     <span className="why-astra__list-text">{item.label}</span>
                   </li>
@@ -108,11 +160,9 @@ const WhyAstra: React.FC = () => {
           <div className="why-astra__column why-astra__column--astra">
             <div className="why-astra__column-header">
               <div className="why-astra__column-icon why-astra__column-icon--astra">
-                <Check size={24} strokeWidth={2.5} />
+                <Check size={22} strokeWidth={2.5} />
               </div>
-              <h3 className="why-astra__column-title">
-                Astra Group of Companies
-              </h3>
+              <h3 className="why-astra__column-title">Astra Group</h3>
             </div>
             <ul className="why-astra__list">
               {comparisonItems
@@ -121,10 +171,10 @@ const WhyAstra: React.FC = () => {
                   <li
                     key={item.label}
                     className="why-astra__list-item"
-                    style={{ transitionDelay: `${index * 100}ms` }}
+                    style={{ transitionDelay: `${index * 80}ms` }}
                   >
                     <span className="why-astra__list-icon why-astra__list-icon--positive">
-                      <Check size={18} strokeWidth={2.5} />
+                      <Check size={16} strokeWidth={2.5} />
                     </span>
                     <span className="why-astra__list-text">{item.label}</span>
                   </li>
@@ -133,66 +183,43 @@ const WhyAstra: React.FC = () => {
           </div>
         </div>
 
-        <div className="why-astra__features">
-          <div
-            className="why-astra__feature-card"
-            style={{ transitionDelay: "100ms" }}
-          >
-            <div className="why-astra__feature-icon">
-              <Building2 size={24} strokeWidth={2} />
-            </div>
-            <h4 className="why-astra__feature-title">System-Based</h4>
-            <p className="why-astra__feature-text">
-              Structured frameworks and repeatable processes that scale with
-              your business.
-            </p>
-          </div>
+        {/* Section Label */}
+        <div className="why-astra__section-label">
+          <span>What Sets Us Apart</span>
+          <div className="why-astra__section-line" />
+        </div>
 
-          <div
-            className="why-astra__feature-card"
-            style={{ transitionDelay: "200ms" }}
-          >
-            <div className="why-astra__feature-icon">
-              <Users size={24} strokeWidth={2} />
-            </div>
-            <h4 className="why-astra__feature-title">Long-Term Scaling</h4>
-            <p className="why-astra__feature-text">
-              Built for sustained growth with integrated teams and continuous
-              optimization.
-            </p>
-          </div>
+        {/* Four Pillars */}
+        <div className="why-astra__pillars">
+          {pillars.map((pillar, index) => {
+            const Icon = pillar.icon;
+            return (
+              <div
+                key={pillar.title}
+                className="why-astra__pillar"
+                style={{ transitionDelay: `${index * 100}ms` }}
+              >
+                <div className="why-astra__pillar-icon">
+                  <Icon size={24} strokeWidth={2} aria-hidden="true" />
+                </div>
+                <h4 className="why-astra__pillar-title">{pillar.title}</h4>
+                <p className="why-astra__pillar-text">{pillar.description}</p>
+              </div>
+            );
+          })}
+        </div>
 
-          <div
-            className="why-astra__feature-card"
-            style={{ transitionDelay: "300ms" }}
-          >
-            <div className="why-astra__feature-icon">
-              <Settings size={24} strokeWidth={2} />
-            </div>
-            <h4 className="why-astra__feature-title">Outcome-Driven</h4>
-            <p className="why-astra__feature-text">
-              Focused on measurable results, not just deliverables and campaign
-              outputs.
-            </p>
-          </div>
-
-          <div
-            className="why-astra__feature-card"
-            style={{ transitionDelay: "400ms" }}
-          >
-            <div className="why-astra__feature-icon">
-              <Shield size={24} strokeWidth={2} />
-            </div>
-            <h4 className="why-astra__feature-title">Risk & Protection</h4>
-            <p className="why-astra__feature-text">
-              Comprehensive insurance and advisory services to safeguard your
-              operations.
-            </p>
-          </div>
+        {/* Bottom Tagline */}
+        <div className="why-astra__footer">
+          <p className="why-astra__footer-text">
+            Stop managing vendors. Start scaling execution.
+          </p>
+          <a href="#ecosystem" className="why-astra__footer-btn">
+            <span>See How It Works</span>
+            <ArrowRight size={18} aria-hidden="true" />
+          </a>
         </div>
       </div>
     </section>
   );
-};
-
-export default WhyAstra;
+}

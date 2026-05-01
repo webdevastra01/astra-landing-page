@@ -5,18 +5,20 @@
   overflow: hidden;
 }
 
-.why-astra__container {
-  max-width: 1280px;
+.why-astra__inner {
+  max-width: 1480px;
   margin: 0 auto;
   padding: 0 1.5rem;
 }
 
-/* ── Header ──────────────────────────────────────────────────── */
+/* ========================================
+   HEADER
+   ======================================== */
 
 .why-astra__header {
   text-align: center;
-  max-width: 640px;
-  margin: 0 auto 4rem;
+  max-width: 600px;
+  margin: 0 auto 3.5rem;
   opacity: 0;
   transform: translateY(24px);
   transition:
@@ -40,12 +42,7 @@
 }
 
 .why-astra__title {
-  font-family:
-    "Inter",
-    system-ui,
-    -apple-system,
-    sans-serif;
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-size: clamp(2rem, 5vw, 2.75rem);
   font-weight: 800;
   letter-spacing: -0.02em;
   color: #0f172a;
@@ -53,19 +50,23 @@
   margin: 0 0 1rem;
 }
 
+.why-astra__title-accent {
+  background: linear-gradient(135deg, #2a3a9d 0%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 .why-astra__description {
-  font-family:
-    "Inter",
-    system-ui,
-    -apple-system,
-    sans-serif;
   font-size: 1.125rem;
   color: #64748b;
   line-height: 1.625;
   margin: 0;
 }
 
-/* ── Comparison ────────────────────────────────────────────────── */
+/* ========================================
+   COMPARISON TABLE
+   ======================================== */
 
 .why-astra__comparison {
   display: grid;
@@ -73,6 +74,9 @@
   gap: 2rem;
   align-items: start;
   margin-bottom: 4rem;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
   opacity: 0;
   transform: translateY(24px);
   transition:
@@ -85,13 +89,13 @@
   transform: translateY(0);
 }
 
-/* ── Columns ───────────────────────────────────────────────────── */
+/* ── Columns ── */
 
 .why-astra__column {
   border: 1px solid #e2e8f0;
   border-radius: 1rem;
   background: #ffffff;
-  padding: 2rem;
+  padding: 1.75rem;
   position: relative;
   overflow: hidden;
   transition:
@@ -105,7 +109,7 @@
 }
 
 .why-astra__column--astra {
-  border-color: #2a3a9d;
+  border-color: rgba(42, 58, 157, 0.25);
 }
 
 .why-astra__column--astra::after {
@@ -115,7 +119,7 @@
   left: 0;
   right: 0;
   height: 3px;
-  background: #2a3a9d;
+  background: linear-gradient(90deg, #2a3a9d, #3b82f6);
 }
 
 .why-astra__column--traditional::after {
@@ -128,20 +132,20 @@
   background: #cbd5e1;
 }
 
-/* ── Column Header ─────────────────────────────────────────────── */
+/* ── Column Header ── */
 
 .why-astra__column-header {
   display: flex;
   align-items: center;
   gap: 0.875rem;
-  margin-bottom: 1.5rem;
-  padding-bottom: 1.25rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
   border-bottom: 1px solid #f1f5f9;
 }
 
 .why-astra__column-icon {
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   border-radius: 0.75rem;
   display: flex;
   align-items: center;
@@ -160,19 +164,14 @@
 }
 
 .why-astra__column-title {
-  font-family:
-    "Inter",
-    system-ui,
-    -apple-system,
-    sans-serif;
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-weight: 700;
   color: #0f172a;
   margin: 0;
   line-height: 1.3;
 }
 
-/* ── List ──────────────────────────────────────────────────────── */
+/* ── List ── */
 
 .why-astra__list {
   list-style: none;
@@ -180,13 +179,13 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.875rem;
+  gap: 0.75rem;
 }
 
 .why-astra__list-item {
   display: flex;
   align-items: flex-start;
-  gap: 0.75rem;
+  gap: 0.625rem;
   opacity: 0;
   transform: translateY(16px);
   transition:
@@ -200,14 +199,14 @@
 }
 
 .why-astra__list-icon {
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  margin-top: 1px;
+  margin-top: 2px;
 }
 
 .why-astra__list-icon--negative {
@@ -221,17 +220,12 @@
 }
 
 .why-astra__list-text {
-  font-family:
-    "Inter",
-    system-ui,
-    -apple-system,
-    sans-serif;
   font-size: 0.9375rem;
   color: #475569;
   line-height: 1.5;
 }
 
-/* ── Divider ───────────────────────────────────────────────────── */
+/* ── Divider ── */
 
 .why-astra__divider {
   display: flex;
@@ -261,10 +255,10 @@
 }
 
 .why-astra__divider-badge {
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  background: #2a3a9d;
+  background: linear-gradient(135deg, #2a3a9d, #3b82f6);
   color: #ffffff;
   display: flex;
   align-items: center;
@@ -273,12 +267,45 @@
   box-shadow: 0 4px 12px rgba(42, 58, 157, 0.25);
 }
 
-/* ── Feature Cards ───────────────────────────────────────────── */
+/* ========================================
+   SECTION LABEL
+   ======================================== */
 
-.why-astra__features {
+.why-astra__section-label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.why-astra__section-label span {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+.why-astra__section-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, #e2e8f0, transparent);
+}
+
+/* ========================================
+   FOUR PILLARS
+   ======================================== */
+
+.why-astra__pillars {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
+  gap: 1.25rem;
+  max-width: 1280px;
+  margin: 0 auto 3.5rem;
   opacity: 0;
   transform: translateY(24px);
   transition:
@@ -286,12 +313,12 @@
     transform 600ms cubic-bezier(0.16, 1, 0.3, 1) 300ms;
 }
 
-.why-astra--visible .why-astra__features {
+.why-astra--visible .why-astra__pillars {
   opacity: 1;
   transform: translateY(0);
 }
 
-.why-astra__feature-card {
+.why-astra__pillar {
   border: 1px solid #e2e8f0;
   border-radius: 1rem;
   background: #ffffff;
@@ -307,52 +334,54 @@
     border-color 300ms ease;
 }
 
-.why-astra--visible .why-astra__feature-card {
+.why-astra--visible .why-astra__pillar {
   opacity: 1;
   transform: translateY(0);
 }
 
-.why-astra__feature-card:hover {
+.why-astra__pillar:hover {
   transform: translateY(-4px);
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08);
   border-color: #cbd5e1;
 }
 
-.why-astra__feature-card::after {
+.why-astra__pillar::after {
   content: "";
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   height: 3px;
-  background: #2a3a9d;
+  background: linear-gradient(90deg, #2a3a9d, #3b82f6);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 300ms ease;
 }
 
-.why-astra__feature-card:hover::after {
+.why-astra__pillar:hover::after {
   transform: scaleX(1);
 }
 
-.why-astra__feature-icon {
-  width: 48px;
-  height: 48px;
+.why-astra__pillar-icon {
+  width: 44px;
+  height: 44px;
   border-radius: 0.875rem;
-  background: #eff6ff;
+  background: rgba(42, 58, 157, 0.08);
   color: #2a3a9d;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 1.25rem;
+  transition: all 200ms ease;
 }
 
-.why-astra__feature-title {
-  font-family:
-    "Inter",
-    system-ui,
-    -apple-system,
-    sans-serif;
+.why-astra__pillar:hover .why-astra__pillar-icon {
+  background: #2a3a9d;
+  color: white;
+  box-shadow: 0 0 20px rgba(42, 58, 157, 0.3);
+}
+
+.why-astra__pillar-title {
   font-size: 1rem;
   font-weight: 700;
   color: #0f172a;
@@ -360,23 +389,80 @@
   letter-spacing: -0.01em;
 }
 
-.why-astra__feature-text {
-  font-family:
-    "Inter",
-    system-ui,
-    -apple-system,
-    sans-serif;
+.why-astra__pillar-text {
   font-size: 0.875rem;
   color: #64748b;
   line-height: 1.625;
   margin: 0;
 }
 
-/* ── Responsive ──────────────────────────────────────────────── */
+/* ========================================
+   FOOTER CTA
+   ======================================== */
+
+.why-astra__footer {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid #e2e8f0;
+  max-width: 1280px;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 600ms cubic-bezier(0.16, 1, 0.3, 1) 500ms,
+    transform 600ms cubic-bezier(0.16, 1, 0.3, 1) 500ms;
+}
+
+.why-astra--visible .why-astra__footer {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.why-astra__footer-text {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 1.25rem;
+  line-height: 1.4;
+}
+
+.why-astra__footer-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  background: linear-gradient(135deg, #2a3a9d 0%, #3b4fb8 100%);
+  color: white;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  border-radius: 0.75rem;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 20px rgba(42, 58, 157, 0.25);
+}
+
+.why-astra__footer-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(42, 58, 157, 0.35);
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 1200px) {
+  .why-astra__pillars {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 
 @media (max-width: 1024px) {
-  .why-astra__features {
-    grid-template-columns: repeat(2, 1fr);
+  .why-astra__comparison {
+    max-width: 100%;
+  }
+
+  .why-astra__pillars {
+    max-width: 100%;
   }
 }
 
@@ -388,6 +474,7 @@
   .why-astra__comparison {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+    margin-bottom: 3rem;
   }
 
   .why-astra__divider {
@@ -403,30 +490,49 @@
     min-height: auto;
   }
 
-  .why-astra__features {
+  .why-astra__pillars {
     grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 3rem;
   }
 
   .why-astra__column {
     padding: 1.5rem;
   }
+
+  .why-astra__footer-text {
+    font-size: 1.125rem;
+  }
 }
 
-/* ── Reduced Motion ──────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .why-astra__title {
+    font-size: 1.75rem;
+  }
+
+  .why-astra__pillar {
+    padding: 1.5rem;
+  }
+}
+
+/* ========================================
+   REDUCED MOTION
+   ======================================== */
 
 @media (prefers-reduced-motion: reduce) {
   .why-astra__header,
   .why-astra__comparison,
   .why-astra__list-item,
   .why-astra__divider,
-  .why-astra__features,
-  .why-astra__feature-card {
+  .why-astra__pillars,
+  .why-astra__pillar,
+  .why-astra__footer {
     opacity: 1;
     transform: none;
     transition: none;
   }
 
-  .why-astra__feature-card::after {
+  .why-astra__pillar::after {
     transform: scaleX(1);
   }
 }
