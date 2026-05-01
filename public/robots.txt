@@ -1,0 +1,6 @@
+# https://robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://astragroupofcompanies.vercel.app/sitemap.xml
