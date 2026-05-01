@@ -7,11 +7,13 @@ import {
   ArrowUpRight,
 } from "lucide-react";
 import "../styles/Ecosystem.css";
+import { useNavigate } from "react-router";
 
 const ecosystems = [
   {
     icon: Building2,
     title: "Real Estate",
+    slug: "real-estate",
     description:
       "Residential and commercial developments, project marketing, and developer partnerships.",
     stat: "₱2.5B+",
@@ -21,6 +23,7 @@ const ecosystems = [
   {
     icon: Truck,
     title: "Logistics & Mobility",
+    slug: "logistics-mobility",
     description: "Fleet operations and transportation-linked revenue systems.",
     stat: "500+",
     statLabel: "Vehicles Managed",
@@ -29,6 +32,7 @@ const ecosystems = [
   {
     icon: Coffee,
     title: "Hospitality & Lifestyle",
+    slug: "hospitality-lifestyle",
     description: "Coworking spaces, food & beverage, and lifestyle hubs.",
     stat: "12",
     statLabel: "Active Locations",
@@ -37,6 +41,7 @@ const ecosystems = [
   {
     icon: Briefcase,
     title: "Business Solutions",
+    slug: "business-solutions",
     description:
       "Sales, marketing, finance, technology, and insurance support.",
     stat: "300+",
@@ -47,6 +52,7 @@ const ecosystems = [
 
 export default function Ecosystem() {
   const sectionRef = useRef<HTMLElement>(null);
+  const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(false);
   const [activeCard, setActiveCard] = useState<number | null>(null);
 
@@ -67,6 +73,17 @@ export default function Ecosystem() {
 
     return () => observer.disconnect();
   }, []);
+
+  const handleCardClick = (slug: string) => {
+    navigate(`/article/${slug}`);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent, slug: string) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      handleCardClick(slug);
+    }
+  };
 
   return (
     <section
@@ -100,10 +117,12 @@ export default function Ecosystem() {
                 className={`ecosystem__card ${isActive ? "ecosystem__card--active" : ""}`}
                 role="listitem"
                 style={{ transitionDelay: `${index * 120}ms` }}
+                onClick={() => handleCardClick(item.slug)}
                 onMouseEnter={() => setActiveCard(index)}
                 onMouseLeave={() => setActiveCard(null)}
                 onFocus={() => setActiveCard(index)}
                 onBlur={() => setActiveCard(null)}
+                onKeyDown={(e) => handleKeyDown(e, item.slug)}
                 tabIndex={0}
               >
                 {/* Card Header */}

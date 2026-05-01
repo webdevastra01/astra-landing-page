@@ -1,4 +1,6 @@
+import { Route, Routes } from "react-router-dom";
 import About from "./components/About";
+import ArticlePage from "./components/ArticlePage";
 import Ecosystem from "./components/Ecosystem";
 import Footer from "./components/Footer";
 import Founder from "./components/Founder";
@@ -10,10 +12,26 @@ import People from "./components/People";
 import Services from "./components/Services";
 import VisionExpansion from "./components/VisionExpansion";
 import WhyAstra from "./components/WhyAstra";
+import { SEO } from "./components/SEO";
 
-function App() {
+// Landing page component — all your homepage sections
+function LandingPage() {
   return (
     <>
+      <SEO
+        title="Astra Group of Companies"
+        description="An integrated ecosystem of business solutions—Real Estate, Logistics, Hospitality, Technology, and Insurance—built for scale."
+        type="website"
+        keywords={[
+          "Astra Group",
+          "Real Estate",
+          "Business Solutions",
+          "Philippines",
+          "AVARIS",
+          "AXIS",
+          "AIVOX",
+        ]}
+      />
       <Navbar />
       <Hero />
       <About />
@@ -25,6 +43,19 @@ function App() {
       <WhyAstra />
       <InsuranceCapability />
       <VisionExpansion />
+    </>
+  );
+}
+
+function App() {
+  return (
+    <>
+      <main>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/article/:id" element={<ArticlePage />} />
+        </Routes>
+      </main>
       <Footer />
     </>
   );
