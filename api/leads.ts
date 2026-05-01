@@ -6,7 +6,22 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const { fullName, email, company, phone, interest, message } = req.body;
+  let body: {
+    fullName?: string;
+    email?: string;
+    company?: string;
+    phone?: string;
+    interest?: string;
+    message?: string;
+  } = {};
+
+  try {
+    body = typeof req.body === "string" ? JSON.parse(req.body) : req.body || {};
+  } catch {
+    return res.status(400).json({ error: "Invalid request body" });
+  }
+
+  const { fullName, email, company, phone, interest, message } = body;
 
   // Basic validation
   if (!fullName || !email || !interest) {
@@ -38,7 +53,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     // 1️⃣ Internal notification email to Astra Group
     await transporter.sendMail({
       from: `"Astra Group Lead" <${process.env.EMAIL_USER}>`,
-      to: "leads@astragroup.com", // TODO: Replace with your actual inbox
+      to: "sales@astragroupph.com",
       subject: `New Lead: ${interestLabel} — ${fullName}`,
       replyTo: email,
       html: `
@@ -142,13 +157,15 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       html: confirmationHtml,
     });
 
-    res
-      .status(200)
-      .json({ success: true, message: "Lead submitted successfully" });
+    return res.status(200).json({
+      success: true,
+      message: "Lead submitted successfully",
+    });
   } catch (err) {
     console.error("Lead submission error:", err);
-    res
-      .status(500)
-      .json({ error: "Failed to process lead. Please try again later." });
+
+    return res.status(500).json({
+      error: "Failed to process lead. Please try again later.",
+    });
   }
 }

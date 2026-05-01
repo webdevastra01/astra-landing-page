@@ -137,15 +137,15 @@ const Footer: React.FC = () => {
             </p>
             <div className="footer__brand-contact">
               <a
-                href="mailto:hello@astragroup.ph"
+                href="mailto:sales@astragroupph.com"
                 className="footer__contact-link"
               >
                 <Mail size={16} strokeWidth={2} />
-                <span>hello@astragroup.ph</span>
+                <span>sales@astragroupph.com</span>
               </a>
-              <a href="tel:+639123456789" className="footer__contact-link">
+              <a href="tel:+639129676049" className="footer__contact-link">
                 <Phone size={16} strokeWidth={2} />
-                <span>+63 912 345 6789</span>
+                <span>+63 912 967 6049</span>
               </a>
               <span className="footer__contact-text">
                 <MapPin size={16} strokeWidth={2} />

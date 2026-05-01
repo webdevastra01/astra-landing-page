@@ -80,7 +80,7 @@ export default function Navbar() {
               ))}
             </ul>
 
-            {/* <button
+            <button
               type="button"
               className="navbar__cta"
               onClick={() => {
@@ -89,7 +89,7 @@ export default function Navbar() {
               }}
             >
               Partner With Astra
-            </button> */}
+            </button>
           </nav>
         </div>
       </header>

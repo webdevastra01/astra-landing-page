@@ -158,12 +158,11 @@ export default function SystemsDriven() {
         </div>
 
         {/* Bottom CTA */}
-        {/* <div className="systems__footer">
+        <div className="systems__footer">
           <p className="systems__footer-text">
             Ready to systematize your business?
           </p>
           <a
-            href="#contact"
             className="systems__cta"
             onClick={(e) => {
               setFormOpen(true);
@@ -172,7 +171,7 @@ export default function SystemsDriven() {
           >
             Start Your Transformation
           </a>
-        </div> */}
+        </div>
       </div>
 
       <LeadForm isOpen={formOpen} onClose={() => setFormOpen(false)} />
