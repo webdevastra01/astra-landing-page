@@ -509,6 +509,11 @@
   .scroll-step__title--large {
     font-size: 1.75rem;
   }
+
+  .scroll-step__number {
+    margin-top: 210px;
+    font-size: 3.5rem;
+  }
 }
 
 /* ========================================
