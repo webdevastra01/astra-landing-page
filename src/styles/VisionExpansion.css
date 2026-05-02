@@ -207,6 +207,7 @@
   overflow: hidden;
   text-align: left;
   width: 100%;
+  min-height:420px;
   transition:
     border-color 300ms ease,
     box-shadow 300ms ease,

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { MapPin, Globe, Building2, Network, Target } from "lucide-react";
+import { Users, Network, Building2, Globe, Target } from "lucide-react";
 import "../styles/VisionExpansion.css";
 
 interface RoadmapPhase {
@@ -13,50 +13,54 @@ interface RoadmapPhase {
 
 const phases: RoadmapPhase[] = [
   {
-    icon: <MapPin size={22} strokeWidth={2} />,
+    icon: <Users size={22} strokeWidth={2} />,
     phase: "01",
-    title: "Strengthen Mindanao",
-    description: "Deepen our operational roots and market presence across the Mindanao region.",
+    title: "Foundation & Execution",
+    description:
+      "Build structured offshore teams across sales, marketing, HR, finance, and technology — combining skilled talent with proven systems.",
     details: [
-      "Expand local distribution networks",
-      "Scale insurance and business solutions",
-      "Reinforce partner and developer relationships",
+      "Deploy trained, managed execution teams",
+      "Establish clear KPIs and accountability frameworks",
+      "Combine people, process, and technology",
     ],
     status: "active",
   },
   {
-    icon: <Globe size={22} strokeWidth={2} />,
+    icon: <Network size={22} strokeWidth={2} />,
     phase: "02",
-    title: "National Presence",
-    description: "Expand to key cities nationwide with dedicated service coverage.",
+    title: "Integrated Operations",
+    description:
+      "Unify Avaris, Axis, Ascend, Ardent, and Aivox under one system — delivering end-to-end support with consistency and accountability.",
     details: [
-      "Strategic entry into Visayas and Luzon",
-      "Deploy cross-trained regional teams",
-      "Establish digital-first client onboarding",
+      "Cross-functional team integration",
+      "Shared reporting and performance dashboards",
+      "Seamless handoffs between divisions",
     ],
     status: "upcoming",
   },
   {
     icon: <Building2 size={22} strokeWidth={2} />,
     phase: "03",
-    title: "Regional Hubs",
-    description: "Build integrated operational hubs with physical lounges and local support.",
+    title: "Scalable Systems",
+    description:
+      "Build infrastructure and processes that grow with your business — from startup foundation to enterprise-scale operations.",
     details: [
-      "Hubs powered by iHub and Axial",
-      "Local talent recruitment and training",
-      "Full-service sales and insurance centers",
+      "Process automation and back-office optimization",
+      "Talent pipeline and workforce scaling",
+      "Technology infrastructure and security",
     ],
     status: "future",
   },
   {
-    icon: <Network size={22} strokeWidth={2} />,
+    icon: <Globe size={22} strokeWidth={2} />,
     phase: "04",
-    title: "Integrated Ecosystem",
-    description: "Become a unified business ecosystem supporting SMEs and enterprise clients.",
+    title: "Global Execution Partner",
+    description:
+      "Become the trusted execution partner for businesses worldwide — managing structured offshore teams that drive measurable results.",
     details: [
-      "IT, automation, and security services",
-      "Building and facilities solutions",
-      "Strong industry partnerships nationwide",
+      "Expand client base across industries and regions",
+      "Deepen strategic partnerships and ecosystems",
+      "Deliver full execution with one partner, real results",
     ],
     status: "future",
   },
@@ -74,7 +78,7 @@ const VisionExpansion: React.FC = () => {
           observer.disconnect();
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     if (sectionRef.current) {
@@ -97,7 +101,7 @@ const VisionExpansion: React.FC = () => {
 
   return (
     <section
-    id="vision"
+      id="vision"
       ref={sectionRef}
       className={`vision-expansion ${isVisible ? "vision-expansion--visible" : ""}`}
       aria-labelledby="vision-expansion-title"
@@ -109,7 +113,10 @@ const VisionExpansion: React.FC = () => {
             Our Growth Roadmap
           </h2>
           <p className="vision-expansion__description">
-            A phased expansion strategy designed to scale Astra's integrated business ecosystem from regional roots to national reach.
+            Astra is more than a service provider — we are your execution
+            partner. Our phased strategy builds structured offshore teams,
+            integrates operations across every business function, and scales
+            systems that grow with you.
           </p>
         </div>
 
@@ -132,15 +139,22 @@ const VisionExpansion: React.FC = () => {
                   <div className="vision-expansion__node-ring">
                     <div className="vision-expansion__node-dot" />
                   </div>
-                  <span className="vision-expansion__node-label">{phase.phase}</span>
+                  <span className="vision-expansion__node-label">
+                    {phase.phase}
+                  </span>
                 </div>
 
                 {/* Card */}
                 <div className="vision-expansion__card">
-                  <div className="vision-expansion__card-accent" aria-hidden="true" />
+                  <div
+                    className="vision-expansion__card-accent"
+                    aria-hidden="true"
+                  />
 
                   <div className="vision-expansion__card-header">
-                    <div className="vision-expansion__card-icon">{phase.icon}</div>
+                    <div className="vision-expansion__card-icon">
+                      {phase.icon}
+                    </div>
                     <span
                       className={`vision-expansion__card-badge vision-expansion__card-badge--${phase.status}`}
                     >
@@ -148,14 +162,23 @@ const VisionExpansion: React.FC = () => {
                     </span>
                   </div>
 
-                  <h3 className="vision-expansion__card-title">{phase.title}</h3>
-                  <p className="vision-expansion__card-description">{phase.description}</p>
+                  <h3 className="vision-expansion__card-title">
+                    {phase.title}
+                  </h3>
+                  <p className="vision-expansion__card-description">
+                    {phase.description}
+                  </p>
 
                   <ul className="vision-expansion__card-list">
                     {phase.details.map((detail) => (
-                      <li key={detail} className="vision-expansion__card-list-item">
+                      <li
+                        key={detail}
+                        className="vision-expansion__card-list-item"
+                      >
                         <span className="vision-expansion__card-bullet" />
-                        <span className="vision-expansion__card-text">{detail}</span>
+                        <span className="vision-expansion__card-text">
+                          {detail}
+                        </span>
                       </li>
                     ))}
                   </ul>
@@ -172,14 +195,16 @@ const VisionExpansion: React.FC = () => {
               <Target size={32} strokeWidth={1.5} />
             </div>
             <div className="vision-expansion__vision-content">
-              <h3 className="vision-expansion__vision-title">Long-Term Vision</h3>
+              <h3 className="vision-expansion__vision-title">
+                Long-Term Vision
+              </h3>
               <p className="vision-expansion__vision-text">
-                Become an integrated business ecosystem. Support SMEs and enterprise clients. Establish strong industry partnerships across the Philippines.
+                Become a global execution partner helping businesses scale
+                through structured offshore teams across sales, marketing, HR,
+                finance, technology, and operations. One partner. Full
+                execution. Real results.
               </p>
             </div>
-            {/* <div className="vision-expansion__vision-arrow">
-              <ArrowRight size={20} strokeWidth={2} />
-            </div> */}
           </div>
         </div>
       </div>
