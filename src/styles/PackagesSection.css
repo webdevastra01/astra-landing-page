@@ -1,0 +1,71 @@
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-6);
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: stretch;
+}
+
+/* Pricing card as flex column to push button to bottom */
+.pricing-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+/* Top content grows to fill space, pushing button down */
+.pricing-card-top {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+}
+
+/* Feature list grows to absorb extra vertical space */
+.pricing-features {
+  flex: 1 1 auto;
+  list-style: none;
+  margin-bottom: var(--space-8);
+  margin-top: 0;
+  padding: 0;
+}
+
+/* Pricing card internal icon alignment */
+.pricing-features li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) 0;
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+/* Remove default checkmark pseudo-element since we use Lucide icon */
+.pricing-features li::before {
+  content: none;
+}
+
+/* Featured card subtle glow on hover */
+.pricing-card.featured:hover {
+  box-shadow: var(--shadow-glow), var(--shadow-xl);
+}
+
+/* Button inside pricing card — full width */
+.pricing-card .btn {
+  width: 100%;
+}
+
+/* Tablet: 2 columns */
+@media (max-width: 1024px) {
+  .pricing-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile: single column */
+@media (max-width: 768px) {
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+}

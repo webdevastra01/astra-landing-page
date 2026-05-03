@@ -15,6 +15,7 @@ import WhyAstra from "./components/WhyAstra";
 import { SEO } from "./components/SEO";
 import HowItWorks from "./components/HowItWorks";
 import FinalCTA from "./components/FinalCTA";
+import PackagesSection from "./components/article/PackagesSection";
 
 // Landing page component — all your homepage sections
 function LandingPage() {
@@ -42,6 +43,7 @@ function LandingPage() {
       <SystemsDriven />
       <Services />
       <HowItWorks/>
+      <PackagesSection/>
       <People />
       <WhyAstra />
       <InsuranceCapability />

@@ -8,7 +8,7 @@ interface RoadmapPhase {
   title: string;
   description: string;
   details: string[];
-  status: "active" | "upcoming" | "future";
+  status: "active" | "upcoming" | "future" | "expansion";
 }
 
 const phases: RoadmapPhase[] = [
@@ -62,7 +62,7 @@ const phases: RoadmapPhase[] = [
       "Deepen strategic partnerships and ecosystems",
       "Deliver full execution with one partner, real results",
     ],
-    status: "future",
+    status: "expansion",
   },
 ];
 
@@ -91,11 +91,13 @@ const VisionExpansion: React.FC = () => {
   const statusLabel = (status: RoadmapPhase["status"]) => {
     switch (status) {
       case "active":
-        return "In Progress";
+        return "Execution Ready";
       case "upcoming":
-        return "Upcoming";
+        return "Integrating";
       case "future":
-        return "Planned";
+        return "Scaling Next";
+      case "expansion":
+        return "Global Expansion";
     }
   };
 
@@ -156,7 +158,7 @@ const VisionExpansion: React.FC = () => {
                       {phase.icon}
                     </div>
                     <span
-                      className={`vision-expansion__card-badge vision-expansion__card-badge--${phase.status}`}
+                      className={`vision-expansion__card-badge vision-expansion__card-badge--upcoming`}
                     >
                       {statusLabel(phase.status)}
                     </span>

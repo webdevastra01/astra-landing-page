@@ -18,6 +18,7 @@ interface FormData {
 
 const interestOptions = [
   { value: "", label: "Select your interest" },
+  { value: "proposal", label: "Custom Proposal Request" },
   { value: "investment", label: "Investment Opportunities" },
   { value: "partnership", label: "Strategic Partnership" },
   { value: "consulting", label: "Business Consulting" },
