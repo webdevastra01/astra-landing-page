@@ -5,7 +5,6 @@ import Ecosystem from "./components/Ecosystem";
 import Footer from "./components/Footer";
 import Founder from "./components/Founder";
 import Hero from "./components/Hero";
-import InsuranceCapability from "./components/InsuranceCapability";
 import SystemsDriven from "./components/Methodology";
 import Navbar from "./components/Navbar";
 import People from "./components/People";
