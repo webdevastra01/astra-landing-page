@@ -46,7 +46,6 @@ function LandingPage() {
       <PackagesSection/>
       <People />
       <WhyAstra />
-      <InsuranceCapability />
       <VisionExpansion />
       <FinalCTA/>
     </>
