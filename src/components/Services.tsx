@@ -121,6 +121,7 @@ const services: Service[] = [
     divisionUrl: "https://aivoxtech.astragroupph.com/",
     color: "#0e5f29",
     icon: Cpu,
+    logo: "/aivoxtech-logo.png",
   },
 ];
 
