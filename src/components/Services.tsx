@@ -154,8 +154,8 @@ const partners: Partner[] = [
     highlight: "Real Estate",
     color: "#059669",
     icon: Home,
-    websiteUrl: "https://axialsite.com",
-    facebookUrl: "https://facebook.com/axial",
+    websiteUrl: "https://axial.astragroupph.com",
+    facebookUrl: "https://www.facebook.com/AxialRES",
     logo: "/axial-logo.png",
   },
   {
@@ -168,8 +168,8 @@ const partners: Partner[] = [
     highlight: "Insurance",
     color: "#00787C",
     icon: Shield,
-    websiteUrl: "https://astria.com",
-    facebookUrl: "https://facebook.com/astria",
+    websiteUrl: "https://astria.astragroupph.com",
+    facebookUrl: "https://www.facebook.com/astria.insurance",
     logo: "/astria-logo.png",
   },
 ];
