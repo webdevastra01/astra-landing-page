@@ -4,185 +4,709 @@ import {
   ExternalLink,
   ChevronLeft,
   ChevronRight,
+  Target,
+  Settings,
+  Globe,
   TrendingUp,
   Megaphone,
   Users,
-  ShieldCheck,
   Cpu,
   Home,
   Shield,
+  Car,
+  Coffee,
+  Dot,
 } from "lucide-react";
 import "../styles/Services.css";
 import LeadForm from "./LeadForm";
 
-interface Service {
+/* ================================================================
+   DATA MODELS
+   ================================================================ */
+
+interface CorePillar {
   id: string;
   name: string;
   tagline: string;
   description: string;
   offerings: string[];
-  division: string;
-  divisionUrl?: string;
+  color: string;
+  icon: React.ElementType;
+}
+
+interface ExecutionCompany {
+  id: string;
+  name: string;
+  tagline: string;
+  description: string;
+  offerings: string[];
   color: string;
   icon: React.ElementType;
   logo?: string;
+  websiteUrl?: string;
+  facebookUrl?: string;
 }
 
-const services: Service[] = [
+/* ================================================================
+   CORE SOLUTION PILLARS
+   3 main operational functions of Astra Business Solutions
+   ================================================================ */
+
+const corePillars: CorePillar[] = [
   {
-    id: "sales",
-    name: "Sales Execution",
-    tagline: "Build and manage your revenue pipeline",
+    id: "advisory",
+    name: "Astra Advisory",
+    tagline: "Strategy & Growth Solutions",
     description:
-      "We handle the full sales support process — from lead generation to appointment setting and follow-ups — ensuring your pipeline stays active and converting.",
+      "Strategic guidance and operational frameworks that align your business objectives with executable roadmaps. We audit, structure, and optimize how your organization grows.",
     offerings: [
-      "Lead generation and prospecting",
-      "Outreach via email and LinkedIn",
+      "Business audits & diagnostics",
+      "SOP development & documentation",
+      "KPI alignment & performance frameworks",
+      "Organizational structuring",
+      "Business consulting & advisory",
+    ],
+    color: "#04397C",
+    icon: Target,
+  },
+  {
+    id: "shared-operations",
+    name: "Astra Shared Operations",
+    tagline: "Admin & Finance Operations",
+    description:
+      "Centralized operational support that keeps your back office running with precision. From bookkeeping to executive assistance, we handle the infrastructure so you focus on growth.",
+    offerings: [
+      "Bookkeeping & financial reporting",
+      "AP/AR management & invoicing",
+      "Payroll support & compliance",
+      "Executive & admin assistance",
+      "Documentation, scheduling & coordination",
+      "Translation, localization & multilingual support",
+    ],
+    color: "#2A3A9D",
+    icon: Settings,
+  },
+  {
+    id: "global-support",
+    name: "Astra Global Support",
+    tagline: "Offshore Execution Teams",
+    description:
+      "Remote talent and operational teams deployed across time zones. We build, manage, and scale offshore units that function as seamless extensions of your organization.",
+    offerings: [
+      "Offshore staffing & team deployment",
+      "Remote operations management",
+      "Multilingual offshore support",
+      "Remote admin & finance teams",
+      "Remote customer support operations",
+    ],
+    color: "#CE2A28",
+    icon: Globe,
+  },
+];
+
+/* ================================================================
+   SPECIALIST EXECUTION COMPANIES
+   8 operational subsidiaries under the Astra Group ecosystem
+   ================================================================ */
+
+const executionCompanies: ExecutionCompany[] = [
+  {
+    id: "avaris",
+    name: "Avaris Sales Solutions",
+    tagline: "Sales Execution",
+    description:
+      "Full sales support from lead generation to appointment setting and pipeline management. We keep your revenue engine active and converting.",
+    offerings: [
+      "Lead generation & prospecting",
+      "Outreach via email & LinkedIn",
       "Appointment setting",
       "CRM management",
-      "Follow-ups and pipeline tracking",
+      "Follow-ups & pipeline tracking",
     ],
-    division: "Avaris Sales Solutions",
-    divisionUrl: "https://avaris.astragroupph.com/",
     color: "#E31B23",
     icon: TrendingUp,
     logo: "/avaris-logo.png",
+    websiteUrl: "https://avaris.astragroupph.com/",
   },
   {
-    id: "marketing",
-    name: "Marketing Support",
-    tagline: "Strengthen your brand and demand generation",
+    id: "axis",
+    name: "Axis Marketing Solutions",
+    tagline: "Marketing Support",
     description:
-      "We support your marketing efforts with content, campaigns, and digital presence to attract and engage your target audience.",
+      "Brand strengthening and demand generation through content, campaigns, and digital presence management.",
     offerings: [
       "Social media management",
-      "Content creation and design",
+      "Content creation & design",
       "Campaign support",
       "Basic ads management",
-      "Brand and messaging support",
+      "Brand & messaging support",
     ],
-    division: "Axis Marketing Solutions",
-    divisionUrl: "https://axis.astragroupph.com/",
     color: "#631090",
     icon: Megaphone,
     logo: "/axis-logo.png",
+    websiteUrl: "https://axis.astragroupph.com/",
   },
   {
-    id: "hr",
-    name: "HR and Recruitment",
-    tagline: "Build and manage your team",
+    id: "ascend",
+    name: "Ascend HR Solutions",
+    tagline: "HR & Recruitment",
     description:
-      "We help you hire, onboard, and manage talent so your business can scale with the right people.",
+      "End-to-end talent acquisition and HR process support. Hire, onboard, and manage teams with structured workflows.",
     offerings: [
-      "Recruitment and screening",
+      "Recruitment & screening",
       "Interview coordination",
       "Onboarding support",
-      "Attendance and admin tracking",
+      "Attendance & admin tracking",
       "HR process support",
     ],
-    division: "Ascend HR Solutions",
-    divisionUrl: "https://web.facebook.com/wehear.ascend",
     color: "#1AD3F2",
     icon: Users,
     logo: "/ascend-logo.png",
+    facebookUrl: "https://web.facebook.com/wehear.ascend",
   },
   {
-    id: "finance",
-    name: "Finance and Admin Support",
-    tagline: "Keep your operations organized and controlled",
+    id: "aivox",
+    name: "AivoxTech IT Solutions",
+    tagline: "Technology & Automation",
     description:
-      "We manage your financial and administrative processes to ensure accuracy, visibility, and efficiency.",
-    offerings: [
-      "Invoicing and billing",
-      "Expense tracking",
-      "Financial reporting",
-      "Payroll assistance",
-      "Documentation and admin support",
-    ],
-    division: "Astra Finance",
-    color: "#2A3A9D",
-    icon: ShieldCheck,
-    logo: "/astra-logo.png",
-  },
-  {
-    id: "tech",
-    name: "Technology and Automation",
-    tagline: "Enable your systems and workflows",
-    description:
-      "We build and maintain the systems that support your business operations and improve efficiency.",
+      "Systems and workflow enablement through web development, CRM optimization, and automation architecture.",
     offerings: [
       "Website development",
-      "CRM setup and optimization",
+      "CRM setup & optimization",
       "Workflow automation",
       "System integration",
       "Basic technical support",
     ],
-    division: "AivoxTech Solutions",
-    divisionUrl: "https://aivoxtech.astragroupph.com/",
     color: "#0e5f29",
     icon: Cpu,
     logo: "/aivoxtech-logo.png",
-  },
-];
-
-interface Partner {
-  id: string;
-  name: string;
-  tagline: string;
-  description: string;
-  offerings: string[];
-  highlight: string;
-  color: string;
-  icon: React.ElementType;
-  websiteUrl?: string;
-  facebookUrl?: string;
-  logo?: string;
-}
-
-const partners: Partner[] = [
-  {
-    id: "axial",
-    name: "Axial",
-    tagline: "Real Estate Services",
-    description:
-      "Helping families and investors get the right property faster. Residential for steady progress today, and strategic land for big wins tomorrow.",
-    offerings: [
-      "Residential — condos and house-and-lots ready for quick move-in, with financing via bank or Pag-IBIG",
-      "Strategic Land — raw, agricultural, or commercial sites for long-term growth and high-value opportunities",
-      "Faster matching, easier paperwork, transparent process",
-    ],
-    highlight: "Real Estate",
-    color: "#059669",
-    icon: Home,
-    websiteUrl: "https://axial.astragroupph.com",
-    facebookUrl: "https://www.facebook.com/AxialRES",
-    logo: "/axial-logo.png",
+    websiteUrl: "https://aivoxtech.astragroupph.com/",
   },
   {
     id: "astria",
-    name: "ASTRIA",
+    name: "Astria Insurance Solutions",
     tagline: "Insurance Solutions",
     description:
-      "Comprehensive insurance advisory and coverage solutions for individuals and businesses. ASTRIA connects you with the right protection for every stage of growth.",
-    offerings: ["Life insurance", "Non-life insurance", "Insurance advisory"],
-    highlight: "Insurance",
+      "Comprehensive insurance advisory and coverage solutions for individuals and businesses at every stage of growth.",
+    offerings: [
+      "Life insurance",
+      "Non-life insurance",
+      "Insurance advisory & planning",
+    ],
     color: "#00787C",
     icon: Shield,
+    logo: "/astria-logo.png",
     websiteUrl: "https://astria.astragroupph.com",
     facebookUrl: "https://www.facebook.com/astria.insurance",
-    logo: "/astria-logo.png",
+  },
+  {
+    id: "axial",
+    name: "Axial Real Estate Services",
+    tagline: "Real Estate Services",
+    description:
+      "Residential and strategic land solutions for families and investors. Faster matching, easier paperwork, transparent process.",
+    offerings: [
+      "Residential — condos & house-and-lots",
+      "Strategic land — raw, agricultural, commercial",
+      "Financing via bank or Pag-IBIG",
+      "Faster matching & transparent process",
+    ],
+    color: "#059669",
+    icon: Home,
+    logo: "/axial-logo.png",
+    websiteUrl: "https://axial.astragroupph.com",
+    facebookUrl: "https://www.facebook.com/AxialRES",
+  },
+  {
+    id: "ihub",
+    name: "iHub Coworking Space & Bistro",
+    tagline: "Workspace & Community",
+    description:
+      "Flexible workspace and community hub for modern professionals, startups, and growing teams.",
+    offerings: [
+      "Coworking desks & private offices",
+      "Meeting rooms & event spaces",
+      "Bistro & refreshment services",
+      "Community networking events",
+    ],
+    color: "#D97706",
+    icon: Coffee,
+    logo: "/ihub-logo.png",
+    facebookUrl: "https://www.facebook.com/ihubdvo",
+  },
+  {
+    id: "jmave",
+    name: "J-MaVe Cars",
+    tagline: "Automotive Solutions",
+    description:
+      "Automotive services and solutions for personal and business mobility needs.",
+    offerings: [
+      "Vehicle sourcing & acquisition",
+      "Fleet management support",
+      "Automotive consultation",
+    ],
+    color: "#4B5563",
+    icon: Car,
+    logo: "/jmave-logo.png",
+    websiteUrl: "https://www.jmavecars.com/",
+    facebookUrl: "https://www.facebook.com/JMaveCars",
   },
 ];
+/* ================================================================
+   COMPONENT: PILLARS CAROUSEL
+   ================================================================ */
 
-export default function Services() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
+interface PillarsCarouselProps {
+  pillars: CorePillar[];
+  isVisible: boolean;
+}
+
+function PillarsCarousel({ pillars, isVisible }: PillarsCarouselProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  const [formOpen, setFormOpen] = useState(false);
   const autoPlayRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
+
+  useEffect(() => {
+    if (isAutoPlaying && isVisible) {
+      autoPlayRef.current = setInterval(() => {
+        setActiveIndex((prev) => (prev + 1) % pillars.length);
+      }, 5000);
+    }
+    return () => {
+      if (autoPlayRef.current) clearInterval(autoPlayRef.current);
+    };
+  }, [isAutoPlaying, isVisible, pillars.length]);
+
+  const goTo = useCallback((index: number) => {
+    setActiveIndex(index);
+    setIsAutoPlaying(false);
+    setTimeout(() => setIsAutoPlaying(true), 10000);
+  }, []);
+
+  const goNext = useCallback(() => {
+    goTo((activeIndex + 1) % pillars.length);
+  }, [activeIndex, goTo, pillars.length]);
+
+  const goPrev = useCallback(() => {
+    goTo((activeIndex - 1 + pillars.length) % pillars.length);
+  }, [activeIndex, goTo, pillars.length]);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    const diff = touchStartX.current - touchEndX.current;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) goNext();
+      else goPrev();
+    }
+  };
+
+  const activePillar = pillars[activeIndex];
+  const ActiveIcon = activePillar.icon;
+
+  return (
+    <div
+      className="pillars-carousel"
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
+      {/* Navigation Arrows */}
+      <button
+        className="pillars-carousel__arrow pillars-carousel__arrow--prev"
+        onClick={goPrev}
+        aria-label="Previous pillar"
+        type="button"
+      >
+        <ChevronLeft size={24} strokeWidth={2} />
+      </button>
+      <button
+        className="pillars-carousel__arrow pillars-carousel__arrow--next"
+        onClick={goNext}
+        aria-label="Next pillar"
+        type="button"
+      >
+        <ChevronRight size={24} strokeWidth={2} />
+      </button>
+
+      {/* Main Card */}
+      <div className="pillars-carousel__card">
+        <div
+          className="pillars-carousel__visual"
+          style={{ background: `${activePillar.color}08` }}
+        >
+          <div
+            className="pillars-carousel__icon"
+            style={{
+              background: activePillar.color,
+              boxShadow: `0 0 40px ${activePillar.color}40`,
+            }}
+          >
+            <ActiveIcon size={32} strokeWidth={1.5} color="white" />
+          </div>
+          <span
+            className="pillars-carousel__number"
+            style={{ color: `${activePillar.color}20` }}
+          >
+            {String(activeIndex + 1).padStart(2, "0")}
+          </span>
+          <div
+            className="pillars-carousel__tag"
+            style={{
+              background: `${activePillar.color}15`,
+              color: activePillar.color,
+            }}
+          >
+            {activePillar.tagline}
+          </div>
+        </div>
+
+        <div className="pillars-carousel__content">
+          <h3 className="pillars-carousel__title">{activePillar.name}</h3>
+          <p className="pillars-carousel__tagline">{activePillar.tagline}</p>
+          <p className="pillars-carousel__description">
+            {activePillar.description}
+          </p>
+
+          <ul className="pillars-carousel__offerings">
+            {activePillar.offerings.map((item) => (
+              <li key={item} className="pillars-carousel__offering">
+                <span
+                  className="pillars-carousel__dot"
+                  style={{ background: activePillar.color }}
+                  aria-hidden="true"
+                />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div
+          className="pillars-carousel__accent"
+          style={{ background: activePillar.color }}
+        />
+      </div>
+
+      {/* Dots */}
+      <div className="pillars-carousel__dots">
+        {pillars.map((pillar, index) => (
+          <button
+            key={pillar.id}
+            className={`pillars-carousel__dot ${
+              index === activeIndex ? "pillars-carousel__dot--active" : ""
+            }`}
+            onClick={() => goTo(index)}
+            aria-label={`Go to ${pillar.name}`}
+            aria-current={index === activeIndex ? "true" : undefined}
+            type="button"
+            style={
+              index === activeIndex ? { background: pillar.color } : undefined
+            }
+          />
+        ))}
+      </div>
+
+      {/* Progress Bar */}
+      <div className="pillars-carousel__progress">
+        <div
+          className="pillars-carousel__progress-bar"
+          style={{
+            width: `${((activeIndex + 1) / pillars.length) * 100}%`,
+            background: activePillar.color,
+          }}
+        />
+      </div>
+    </div>
+  );
+}
+
+/* ================================================================
+   COMPONENT: EXECUTION COMPANIES GRID — VERTICAL DUAL CAROUSEL
+   Two columns, each with continuous vertical scroll (marquee)
+   ================================================================ */
+
+interface ExecutionCompaniesGridProps {
+  companies: ExecutionCompany[];
+}
+
+function ExecutionCompaniesGrid({ companies }: ExecutionCompaniesGridProps) {
+  // Split into two columns for the dual-carousel effect
+  const leftColumn = companies.filter((_, i) => i % 2 === 0);
+  const rightColumn = companies.filter((_, i) => i % 2 === 1);
+
+  // Duplicate arrays for seamless infinite scroll loop
+  const leftColumnLooped = [...leftColumn, ...leftColumn];
+  const rightColumnLooped = [...rightColumn, ...rightColumn];
+
+  return (
+    <div className="execution-grid">
+      <div className="execution-grid__inner execution-grid__inner--dual">
+        {/* Left Column — scrolls upward */}
+        <div className="execution-column execution-column--left">
+          <div className="execution-column__track execution-column__track--up">
+            {leftColumnLooped.map((company, index) => {
+              const CompanyIcon = company.icon;
+              const uniqueKey = `${company.id}-left-${index}`;
+              return (
+                <div
+                  key={uniqueKey}
+                  className="execution-card execution-card--compact"
+                >
+                  <div
+                    className="execution-card__visual execution-card__visual--compact"
+                    style={{ background: `${company.color}08` }}
+                  >
+                    <div
+                      className={`execution-card__icon ${
+                        company.logo ? "execution-card__icon--logo" : ""
+                      }`}
+                      style={{
+                        background: company.logo ? "white" : company.color,
+                        boxShadow: `0 0 40px ${company.color}40`,
+                      }}
+                    >
+                      {company.logo ? (
+                        <img
+                          src={company.logo}
+                          alt={`${company.name} logo`}
+                          className="execution-card__logo"
+                        />
+                      ) : (
+                        <CompanyIcon
+                          size={28}
+                          strokeWidth={1.5}
+                          color="white"
+                        />
+                      )}
+                    </div>
+                    <span
+                      className="execution-card__tagline-badge"
+                      style={{
+                        background: `${company.color}15`,
+                        color: company.color,
+                      }}
+                    >
+                      {company.tagline}
+                    </span>
+                  </div>
+
+                  <div className="execution-card__content execution-card__content--compact">
+                    <div className="execution-card__meta">
+                      <h4 className="execution-card__name">{company.name}</h4>
+                      <span className="execution-card__tagline">
+                        {company.tagline}
+                      </span>
+                    </div>
+
+                    <p className="execution-card__description execution-card__description--compact">
+                      {company.description}
+                    </p>
+
+                    <ul className="execution-card__offerings execution-card__offerings--compact">
+                      {company.offerings.slice(0, 3).map((item) => (
+                        <li key={item} className="execution-card__offering">
+                          <Dot
+                            size={16}
+                            color={company.color}
+                            className="execution-card__dot"
+                          />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="execution-card__actions execution-card__actions--compact">
+                      {company.websiteUrl && (
+                        <a
+                          href={company.websiteUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="execution-card__btn"
+                          style={{
+                            borderColor: `${company.color}40`,
+                            color: company.color,
+                          }}
+                        >
+                          Website
+                          <ExternalLink size={14} />
+                        </a>
+                      )}
+                      {company.facebookUrl && (
+                        <a
+                          href={company.facebookUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="execution-card__btn"
+                          style={{
+                            borderColor: `${company.color}40`,
+                            color: company.color,
+                          }}
+                        >
+                          Facebook
+                          <ExternalLink size={14} />
+                        </a>
+                      )}
+                    </div>
+                  </div>
+
+                  <div
+                    className="execution-card__accent"
+                    style={{ background: company.color }}
+                  />
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Right Column — scrolls downward (opposite direction for visual interest) */}
+        <div className="execution-column execution-column--right">
+          <div className="execution-column__track execution-column__track--down">
+            {rightColumnLooped.map((company, index) => {
+              const CompanyIcon = company.icon;
+              const uniqueKey = `${company.id}-right-${index}`;
+              return (
+                <div
+                  key={uniqueKey}
+                  className="execution-card execution-card--compact"
+                >
+                  <div
+                    className="execution-card__visual execution-card__visual--compact"
+                    style={{ background: `${company.color}08` }}
+                  >
+                    <div
+                      className={`execution-card__icon ${
+                        company.logo ? "execution-card__icon--logo" : ""
+                      }`}
+                      style={{
+                        background: company.logo ? "white" : company.color,
+                        boxShadow: `0 0 40px ${company.color}40`,
+                      }}
+                    >
+                      {company.logo ? (
+                        <img
+                          src={company.logo}
+                          alt={`${company.name} logo`}
+                          className="execution-card__logo"
+                        />
+                      ) : (
+                        <CompanyIcon
+                          size={28}
+                          strokeWidth={1.5}
+                          color="white"
+                        />
+                      )}
+                    </div>
+                    <span
+                      className="execution-card__tagline-badge"
+                      style={{
+                        background: `${company.color}15`,
+                        color: company.color,
+                      }}
+                    >
+                      {company.tagline}
+                    </span>
+                  </div>
+
+                  <div className="execution-card__content execution-card__content--compact">
+                    <div className="execution-card__meta">
+                      <h4 className="execution-card__name">{company.name}</h4>
+                      <span className="execution-card__tagline">
+                        {company.tagline}
+                      </span>
+                    </div>
+
+                    <p className="execution-card__description execution-card__description--compact">
+                      {company.description}
+                    </p>
+
+                    <ul className="execution-card__offerings execution-card__offerings--compact">
+                      {company.offerings.slice(0, 3).map((item) => (
+                        <li key={item} className="execution-card__offering">
+                          <Dot
+                            size={16}
+                            color={company.color}
+                            className="execution-card__dot"
+                          />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="execution-card__actions execution-card__actions--compact">
+                      {company.websiteUrl && (
+                        <a
+                          href={company.websiteUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="execution-card__btn"
+                          style={{
+                            borderColor: `${company.color}40`,
+                            color: company.color,
+                          }}
+                        >
+                          Website
+                          <ExternalLink size={14} />
+                        </a>
+                      )}
+                      {company.facebookUrl && (
+                        <a
+                          href={company.facebookUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="execution-card__btn"
+                          style={{
+                            borderColor: `${company.color}40`,
+                            color: company.color,
+                          }}
+                        >
+                          Facebook
+                          <ExternalLink size={14} />
+                        </a>
+                      )}
+                    </div>
+                  </div>
+
+                  <div
+                    className="execution-card__accent"
+                    style={{ background: company.color }}
+                  />
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
+      {/* Gradient masks for smooth fade edges */}
+      <div
+        className="execution-grid__mask execution-grid__mask--top"
+        aria-hidden="true"
+      />
+      <div
+        className="execution-grid__mask execution-grid__mask--bottom"
+        aria-hidden="true"
+      />
+    </div>
+  );
+}
+/* ================================================================
+   MAIN COMPONENT: BUSINESS SOLUTIONS
+   ================================================================ */
+
+export default function BusinessSolutions() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const [formOpen, setFormOpen] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -202,357 +726,90 @@ export default function Services() {
     return () => observer.disconnect();
   }, []);
 
-  useEffect(() => {
-    if (isAutoPlaying && isVisible) {
-      autoPlayRef.current = setInterval(() => {
-        setActiveIndex((prev) => (prev + 1) % services.length);
-      }, 5000);
-    }
-    return () => {
-      if (autoPlayRef.current) clearInterval(autoPlayRef.current);
-    };
-  }, [isAutoPlaying, isVisible]);
-
-  const goTo = useCallback((index: number) => {
-    setActiveIndex(index);
-    setIsAutoPlaying(false);
-    setTimeout(() => setIsAutoPlaying(true), 10000);
-  }, []);
-
-  const goNext = useCallback(() => {
-    goTo((activeIndex + 1) % services.length);
-  }, [activeIndex, goTo]);
-
-  const goPrev = useCallback(() => {
-    goTo((activeIndex - 1 + services.length) % services.length);
-  }, [activeIndex, goTo]);
-
-  const handleTouchStart = (e: React.TouchEvent) => {
-    touchStartX.current = e.touches[0].clientX;
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    touchEndX.current = e.touches[0].clientX;
-  };
-
-  const handleTouchEnd = () => {
-    const diff = touchStartX.current - touchEndX.current;
-    if (Math.abs(diff) > 50) {
-      if (diff > 0) goNext();
-      else goPrev();
-    }
-  };
-
-  const activeService = services[activeIndex];
-  const ActiveIcon = activeService.icon;
-
   return (
     <section
       ref={sectionRef}
-      id="services"
-      className={`services ${isVisible ? "services--visible" : ""}`}
-      aria-labelledby="services-title"
+      id="business-solutions"
+      className={`business-solutions ${
+        isVisible ? "business-solutions--visible" : ""
+      }`}
+      aria-labelledby="business-solutions-title"
     >
-      <div className="services__inner">
-        {/* Section Header */}
-        <div className="services__header">
-          <span className="services__label">Core Services</span>
-          <h2 id="services-title" className="services__title">
-            What We Execute
-            <span className="services__title-accent"> For You</span>
+      <div className="business-solutions__inner">
+        {/* ================================================================
+            SECTION HEADER
+            ================================================================ */}
+        <div className="business-solutions__header">
+          <span className="business-solutions__label">
+            Astra Business Solutions
+          </span>
+          <h2
+            id="business-solutions-title"
+            className="business-solutions__title"
+          >
+            Integrated Operations
+            <span className="business-solutions__title-accent">
+              . Scalable Delivery.
+            </span>
           </h2>
-          <p className="services__description">
-            Five execution functions. One integrated partner. Each service is
-            delivered through a specialized division with trained teams,
-            structured processes, and clear accountability.
+          <p className="business-solutions__description">
+            One ecosystem. One operational platform. Three core solution pillars
+            powering eight specialist execution companies. Structured for
+            enterprise scale, designed for seamless integration.
           </p>
         </div>
 
-        {/* Carousel */}
-        <div
-          className="services__carousel"
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={handleTouchEnd}
-        >
-          <button
-            className="services__arrow services__arrow--prev"
-            onClick={goPrev}
-            aria-label="Previous service"
-            type="button"
-          >
-            <ChevronLeft size={24} strokeWidth={2} />
-          </button>
-          <button
-            className="services__arrow services__arrow--next"
-            onClick={goNext}
-            aria-label="Next service"
-            type="button"
-          >
-            <ChevronRight size={24} strokeWidth={2} />
-          </button>
-
-          <div className="services__carousel-card">
-            <div
-              className="services__carousel-visual"
-              style={{ background: `${activeService.color}08` }}
-            >
-              <div
-                className={`services__carousel-icon ${
-                  activeService.logo ? "services__carousel-icon--logo" : ""
-                }`}
-                style={{
-                  background: activeService.logo
-                    ? "white"
-                    : activeService.color,
-                  boxShadow: `0 0 40px ${activeService.color}40`,
-                }}
-              >
-                {activeService.logo ? (
-                  <img
-                    src={activeService.logo}
-                    alt={`${activeService.division} logo`}
-                    className="services__carousel-logo"
-                  />
-                ) : (
-                  <ActiveIcon size={32} strokeWidth={1.5} color="white" />
-                )}
-              </div>
-              <span
-                className="services__carousel-number"
-                style={{ color: `${activeService.color}20` }}
-              >
-                {String(activeIndex + 1).padStart(2, "0")}
-              </span>
-              <div
-                className="services__carousel-division"
-                style={{
-                  background: `${activeService.color}15`,
-                  color: activeService.color,
-                }}
-              >
-                {activeService.division}
-              </div>
-            </div>
-
-            <div className="services__carousel-content">
-              <h3 className="services__carousel-title">{activeService.name}</h3>
-              <p className="services__carousel-tagline">
-                {activeService.tagline}
-              </p>
-              <p className="services__carousel-description">
-                {activeService.description}
-              </p>
-
-              <ul className="services__carousel-offerings">
-                {activeService.offerings.map((item) => (
-                  <li key={item} className="services__carousel-offering">
-                    <span
-                      className="services__carousel-dot"
-                      style={{ background: activeService.color }}
-                      aria-hidden="true"
-                    />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-
-              {activeService.divisionUrl ? (
-                <a
-                  href={activeService.divisionUrl}
-                  className="services__carousel-link"
-                  style={{
-                    color: activeService.color,
-                    borderColor: `${activeService.color}30`,
-                  }}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span>Delivered through {activeService.division}</span>
-                  <ExternalLink size={14} aria-hidden="true" />
-                </a>
-              ) : (
-                <span
-                  className="services__carousel-link services__carousel-link--static"
-                  style={{
-                    color: activeService.color,
-                    borderColor: `${activeService.color}30`,
-                  }}
-                >
-                  <span>Delivered through {activeService.division}</span>
-                </span>
-              )}
-            </div>
-
-            <div
-              className="services__carousel-accent"
-              style={{ background: activeService.color }}
-            />
-          </div>
-
-          <div className="services__dots">
-            {services.map((service, index) => (
-              <button
-                key={service.id}
-                className={`services__dot ${index === activeIndex ? "services__dot--active" : ""}`}
-                onClick={() => goTo(index)}
-                aria-label={`Go to ${service.name}`}
-                aria-current={index === activeIndex ? "true" : undefined}
-                type="button"
-                style={
-                  index === activeIndex
-                    ? { background: service.color }
-                    : undefined
-                }
-              />
-            ))}
-          </div>
-
-          <div className="services__progress">
-            <div
-              className="services__progress-bar"
-              style={{
-                width: `${((activeIndex + 1) / services.length) * 100}%`,
-                background: activeService.color,
-              }}
-            />
-          </div>
-        </div>
-
-        {/* Partner Services */}
-        <div className="services__partners">
-          <div className="services__partners-header">
-            <span className="services__partners-label">Partner Brands</span>
-            <h3 className="services__partners-title">
-              Also Part of{" "}
-              <span className="services__partners-title-accent">
-                the Astra Group
+        {/* ================================================================
+            CORE SOLUTION PILLARS CAROUSEL
+            ================================================================ */}
+        <div className="business-solutions__pillars">
+          <div className="business-solutions__pillars-header">
+            <span className="business-solutions__pillars-label">
+              Core Solution Pillars
+            </span>
+            <h3 className="business-solutions__pillars-title">
+              How We{" "}
+              <span className="business-solutions__pillars-title-accent">
+                Operate
               </span>
             </h3>
           </div>
-
-          <div className="services__partners-grid">
-            {partners.map((partner) => {
-              const PartnerIcon = partner.icon;
-              return (
-                <div key={partner.id} className="partner-card">
-                  <div
-                    className="partner-card__visual"
-                    style={{ background: `${partner.color}08` }}
-                  >
-                    <div
-                      className={`partner-card__icon ${
-                        partner.logo ? "partner-card__icon--logo" : ""
-                      }`}
-                      style={{
-                        background: partner.logo ? "white" : partner.color,
-                        boxShadow: `0 0 40px ${partner.color}40`,
-                      }}
-                    >
-                      {partner.logo ? (
-                        <img
-                          src={partner.logo}
-                          alt={`${partner.name} logo`}
-                          className="partner-card__logo"
-                        />
-                      ) : (
-                        <PartnerIcon
-                          size={28}
-                          strokeWidth={1.5}
-                          color="white"
-                        />
-                      )}
-                    </div>
-                    <span
-                      className="partner-card__highlight"
-                      style={{
-                        background: `${partner.color}15`,
-                        color: partner.color,
-                      }}
-                    >
-                      {partner.highlight}
-                    </span>
-                  </div>
-
-                  <div className="partner-card__content">
-                    <div className="partner-card__meta">
-                      <h4 className="partner-card__name">{partner.name}</h4>
-                      <span className="partner-card__tagline">
-                        {partner.tagline}
-                      </span>
-                    </div>
-
-                    <p className="partner-card__description">
-                      {partner.description}
-                    </p>
-
-                    <ul className="partner-card__offerings">
-                      {partner.offerings.map((item) => (
-                        <li key={item} className="partner-card__offering">
-                          <span
-                            className="partner-card__dot"
-                            style={{ background: partner.color }}
-                          />
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    <div className="partner-card__actions">
-                      {partner.websiteUrl && (
-                        <a
-                          href={partner.websiteUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="partner-card__btn"
-                          style={{
-                            borderColor: `${partner.color}40`,
-                            color: partner.color,
-                          }}
-                        >
-                          Visit Website
-                          <ExternalLink size={14} />
-                        </a>
-                      )}
-
-                      {partner.facebookUrl && (
-                        <a
-                          href={partner.facebookUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="partner-card__btn"
-                          style={{
-                            borderColor: `${partner.color}40`,
-                            color: partner.color,
-                          }}
-                        >
-                          Facebook Page
-                          <ExternalLink size={14} />
-                        </a>
-                      )}
-                    </div>
-                  </div>
-
-                  <div
-                    className="partner-card__accent"
-                    style={{ background: partner.color }}
-                  />
-                </div>
-              );
-            })}
-          </div>
+          <PillarsCarousel pillars={corePillars} isVisible={isVisible} />
         </div>
 
-        {/* Bottom CTA */}
-        <div className="services__footer">
-          <p className="services__footer-text">
-            Need multiple functions? We integrate them under one system.
+        {/* ================================================================
+            SPECIALIST EXECUTION COMPANIES GRID
+            ================================================================ */}
+        <div className="business-solutions__execution">
+          <div className="business-solutions__execution-header">
+            <span className="business-solutions__execution-label">
+              Specialist Execution Companies
+            </span>
+            <h3 className="business-solutions__execution-title">
+              Execution Brands Under{" "}
+              <span className="business-solutions__execution-title-accent">
+                the Ecosystem
+              </span>
+            </h3>
+          </div>
+          <ExecutionCompaniesGrid companies={executionCompanies} />
+        </div>
+
+        {/* ================================================================
+            CTA SECTION
+            ================================================================ */}
+        <div className="business-solutions__cta">
+          <p className="business-solutions__cta-text">
+            Need multiple functions? We integrate them under one operational
+            system.
           </p>
           <a
-            className="services__footer-btn"
+            className="business-solutions__cta-btn"
             onClick={(e) => {
               setFormOpen(true);
               e.preventDefault();
             }}
+            href="#contact"
           >
             <span>Talk to Us About Your Needs</span>
             <ArrowRight size={18} aria-hidden="true" />
