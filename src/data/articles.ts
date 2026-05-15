@@ -35,6 +35,181 @@ export const articleData: ArticleData = {
   brand: "Astra Group of Companies",
   verticals: [
     {
+      id: "astra-advisory",
+      name: "Astra Advisory",
+      slug: "astra-advisory",
+      tagline:
+        "Strategy, systems, and organizational solutions designed for scalable business growth.",
+      hero: {
+        title: "Strategic Advisory Built for Scalable Business Growth",
+        description:
+          "Astra Advisory helps businesses improve structure, performance, and operational clarity through strategic consulting, process development, and organizational alignment.",
+      },
+      intro:
+        "Built as Astra’s strategy and growth solutions arm, Astra Advisory supports startups, SMEs, and growing enterprises through structured consulting systems that strengthen operations, improve accountability, and create scalable foundations for long-term success.",
+      sections: [
+        {
+          title: "What We Deliver",
+          type: "features",
+          items: [
+            {
+              title: "Business Audits",
+              description:
+                "Comprehensive operational assessments designed to identify inefficiencies, gaps, and opportunities for growth across key business functions.",
+            },
+            {
+              title: "SOP Development",
+              description:
+                "Structured standard operating procedures that improve consistency, accountability, and operational efficiency across teams and departments.",
+            },
+            {
+              title: "KPI Alignment & Organizational Structuring",
+              description:
+                "Clear performance metrics and organizational systems designed to align teams, leadership, and company objectives for scalable execution.",
+            },
+            {
+              title: "Business Consulting",
+              description:
+                "Strategic guidance for operations, growth planning, execution systems, and business optimization tailored to evolving business needs.",
+            },
+          ],
+        },
+        {
+          title: "The Astra Advisory Advantage",
+          type: "bullets",
+          items: [
+            "Structured systems focused on long-term scalability",
+            "Operational clarity across teams and departments",
+            "Data-driven performance alignment",
+            "Consulting designed for practical execution—not just theory",
+          ],
+        },
+        {
+          title: "Built for Sustainable Growth",
+          type: "content",
+          content:
+            "Astra Advisory helps businesses move beyond reactive operations by implementing systems that improve structure, accountability, and long-term decision-making. The goal is not only growth—but scalable and sustainable growth built on clear operational foundations.",
+        },
+      ],
+      cta: {
+        text: "Structure your business for clarity, scalability, and long-term growth.",
+      },
+    },
+    {
+      id: "astra-shared-operations",
+      name: "Astra Shared Operations",
+      slug: "astra-shared-operations",
+      tagline:
+        "Centralized admin, finance, coordination, and multilingual operational support.",
+      hero: {
+        title: "The Operational Backbone Behind Scalable Businesses",
+        description:
+          "Astra Shared Operations centralizes administrative, financial, coordination, and multilingual support systems that keep businesses organized, efficient, and execution-ready.",
+      },
+      intro:
+        "Designed as Astra’s operational backbone, Astra Shared Operations provides the day-to-day support systems businesses need to maintain structure, control, and consistency across operations.",
+      sections: [
+        {
+          title: "What We Deliver",
+          type: "features",
+          items: [
+            {
+              title: "Finance & Administrative Support",
+              description:
+                "Bookkeeping, AP/AR, invoicing, payroll support, executive assistance, and documentation systems that improve operational visibility and control.",
+            },
+            {
+              title: "Coordination & Scheduling",
+              description:
+                "Administrative coordination and scheduling support that streamline internal communication, workflow management, and execution efficiency.",
+            },
+            {
+              title: "Translation & Localization",
+              description:
+                "Multilingual support, localization services, and communication assistance designed for businesses operating across diverse markets and audiences.",
+            },
+          ],
+        },
+        {
+          title: "Why Businesses Rely on Shared Operations",
+          type: "bullets",
+          items: [
+            "Centralized operational support systems",
+            "Reduced administrative workload for core teams",
+            "Improved accuracy and process consistency",
+            "Scalable support for growing organizations",
+            "Multilingual coordination and communication support",
+          ],
+        },
+        {
+          title: "Astra’s Operational Backbone",
+          type: "content",
+          content:
+            "Astra Shared Operations exists to strengthen execution behind the scenes. By centralizing administrative and financial workflows, businesses gain the operational stability needed to scale efficiently while keeping leadership focused on growth and strategy.",
+        },
+      ],
+      cta: {
+        text: "Operational systems designed to keep businesses organized, efficient, and scalable.",
+      },
+    },
+    {
+      id: "astra-global-support",
+      name: "Astra Global Support",
+      slug: "astra-global-support",
+      tagline:
+        "Remote execution teams and offshore operational support built for scalability.",
+      hero: {
+        title: "Global Support Teams Built for Modern Business Operations",
+        description:
+          "Astra Global Support provides scalable offshore staffing and remote operational teams that help businesses expand capacity, reduce overhead, and maintain execution quality.",
+      },
+      intro:
+        "Built to support modern distributed operations, Astra Global Support delivers remote execution teams across administrative, finance, customer support, and multilingual operational functions.",
+      sections: [
+        {
+          title: "What We Deliver",
+          type: "features",
+          items: [
+            {
+              title: "Offshore Staffing",
+              description:
+                "Dedicated remote professionals integrated into business operations to provide scalable workforce support across multiple functions.",
+            },
+            {
+              title: "Remote Operations Support",
+              description:
+                "Structured remote operational systems that help businesses maintain continuity, efficiency, and execution across distributed teams.",
+            },
+            {
+              title: "Multilingual Customer & Admin Support",
+              description:
+                "Remote administrative, finance, and customer support services enhanced by multilingual communication capabilities for global operations.",
+            },
+          ],
+        },
+        {
+          title: "The Global Support Advantage",
+          type: "bullets",
+          items: [
+            "Scalable offshore workforce solutions",
+            "Reduced operational overhead",
+            "Flexible remote execution teams",
+            "Multilingual support capabilities",
+            "Reliable operational continuity",
+          ],
+        },
+        {
+          title: "Built for Distributed Growth",
+          type: "content",
+          content:
+            "As businesses increasingly operate across borders and digital environments, Astra Global Support provides the remote infrastructure needed to maintain efficiency, communication, and operational scalability without compromising execution quality.",
+        },
+      ],
+      cta: {
+        text: "Remote operational support designed for modern, scalable business growth.",
+      },
+    },
+    {
       id: "real-estate",
       name: "Real Estate",
       slug: "real-estate",

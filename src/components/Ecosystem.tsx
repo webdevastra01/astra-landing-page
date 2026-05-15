@@ -11,6 +11,16 @@ import { useNavigate } from "react-router";
 
 const ecosystems = [
   {
+    icon: Briefcase,
+    title: "Business Solutions",
+    slug: "business-solutions",
+    description:
+      "Sales, marketing, finance, technology, and insurance support.",
+    stat: "300+",
+    statLabel: "Clients Served",
+    color: "#2A3A9D",
+  },
+  {
     icon: Building2,
     title: "Real Estate",
     slug: "real-estate",
@@ -37,16 +47,6 @@ const ecosystems = [
     stat: "12",
     statLabel: "Active Locations",
     color: "#1E2A70",
-  },
-  {
-    icon: Briefcase,
-    title: "Business Solutions",
-    slug: "business-solutions",
-    description:
-      "Sales, marketing, finance, technology, and insurance support.",
-    stat: "300+",
-    statLabel: "Clients Served",
-    color: "#2A3A9D",
   },
 ] as const;
 

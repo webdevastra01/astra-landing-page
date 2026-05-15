@@ -10,6 +10,14 @@ import {
 import "../styles/About.css";
 
 const capabilities = [
+  
+  {
+    icon: ShieldCheck,
+    title: "Shared Operations",
+    division: "Astra",
+    description:
+      "Centralized finance, admin, documentation, coordination, and multilingual support that keeps business operations structured, efficient, and scalable.",
+  },
   {
     icon: TrendingUp,
     title: "Sales Execution",
@@ -30,13 +38,6 @@ const capabilities = [
     division: "Ascend",
     description:
       "Hiring, onboarding, and people management so you scale with the right talent in place.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Finance & Admin",
-    division: "Astra Finance",
-    description:
-      "Invoicing, reporting, payroll, and documentation to keep operations organized and controlled.",
   },
   {
     icon: Cpu,
@@ -103,7 +104,7 @@ export default function About() {
 
           <div className="about__narrative-block">
             <p className="about__narrative-text">
-              Through our specialized divisions — <strong>Avaris</strong> for
+              Through our specialized divisions —  <strong>Astra</strong> for Shared Operations, <strong>Avaris</strong> for
               Sales, <strong>Axis</strong> for Marketing,{" "}
               <strong>Ascend</strong> for HR, <strong>Astra Finance</strong> for
               Finance, and <strong>Aivox</strong> for Technology — we deliver
