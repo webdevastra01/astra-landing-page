@@ -89,7 +89,7 @@ const packages: Package[] = [
 
 /* ------------------ Currency Converter Hook ------------------ */
 
-type Currency = "EUR" | "PHP" | "USD";
+type Currency = "EUR" | "PHP" | "USD" | "AUD";
 
 const useCurrencyConverter = () => {
   const [currency, setCurrency] = useState<Currency>("EUR");
@@ -97,6 +97,7 @@ const useCurrencyConverter = () => {
     EUR: 1,
     PHP: 0,
     USD: 0,
+    AUD: 0,
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -131,7 +132,7 @@ const useCurrencyConverter = () => {
   };
 
   const toggleCurrency = async () => {
-    const cycle: Currency[] = ["EUR", "PHP", "USD"];
+    const cycle: Currency[] = ["EUR", "PHP", "USD", "AUD"];
     const currentIndex = cycle.indexOf(currency);
     const nextCurrency = cycle[(currentIndex + 1) % cycle.length];
 
@@ -172,6 +173,7 @@ const useCurrencyConverter = () => {
       EUR: "€",
       PHP: "₱",
       USD: "$",
+      AUD: "A$",
     };
 
     return `${symbols[currency]}${converted.toLocaleString()}`;
@@ -198,7 +200,7 @@ const CurrencyToggle: React.FC<{
   onToggle: () => void;
   loading: boolean;
 }> = ({ currency, onToggle, loading }) => {
-  const cycle: Currency[] = ["EUR", "PHP", "USD"];
+  const cycle: Currency[] = ["EUR", "PHP", "USD", "AUD"];
   const currentIndex = cycle.indexOf(currency);
 
   return (
@@ -212,7 +214,7 @@ const CurrencyToggle: React.FC<{
         <div
           className="toggle-slider"
           style={{
-            left: `${(currentIndex / (cycle.length - 1)) * 66.66}%`,
+            left: `${(currentIndex / (cycle.length - 1)) * 75}%`,
           }}
         />
         {cycle.map((curr) => (

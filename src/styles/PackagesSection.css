@@ -62,7 +62,7 @@
   position: absolute;
   top: 4px;
   bottom: 4px;
-  width: calc(33.33% - 8px);
+  width: calc(25% - 8px);
   background: white;
   border-radius: var(--radius-lg, 10px);
   box-shadow:
