@@ -89,27 +89,62 @@ const packages: Package[] = [
 
 /* ------------------ Currency Converter Hook ------------------ */
 
-type Currency = "EUR" | "PHP";
+type Currency = "EUR" | "PHP" | "USD";
 
 const useCurrencyConverter = () => {
   const [currency, setCurrency] = useState<Currency>("EUR");
-  const [rate, setRate] = useState<number>(1);
+  const [rates, setRates] = useState<Record<Currency, number>>({
+    EUR: 1,
+    PHP: 0,
+    USD: 0,
+  });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  const fetchRate = async (target: Currency): Promise<number> => {
+    if (target === "EUR") return 1;
+
+    // Return cached rate if available
+    if (rates[target] > 0) return rates[target];
+
+    const response = await fetch(
+      `https://currency-conversion-and-exchange-rates.p.rapidapi.com/convert?from=EUR&to=${target}&amount=1`,
+      {
+        headers: {
+          "x-rapidapi-key": import.meta.env.VITE_RAPIDAPI_KEY,
+          "x-rapidapi-host":
+            "currency-conversion-and-exchange-rates.p.rapidapi.com",
+        },
+      },
+    );
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    const rate = data?.result ?? data?.info?.rate ?? data?.rates?.[target];
+
+    if (!rate) throw new Error("Invalid API response");
+
+    return rate;
+  };
+
   const toggleCurrency = async () => {
-    const nextCurrency = currency === "EUR" ? "PHP" : "EUR";
+    const cycle: Currency[] = ["EUR", "PHP", "USD"];
+    const currentIndex = cycle.indexOf(currency);
+    const nextCurrency = cycle[(currentIndex + 1) % cycle.length];
 
     if (nextCurrency === "EUR") {
       setCurrency("EUR");
-      setRate(1);
       setError(null);
       return;
     }
 
-    // ✅ Already fetched → reuse
-    if (rate !== 1) {
-      setCurrency("PHP");
+    // Already fetched → reuse
+    if (rates[nextCurrency] > 0) {
+      setCurrency(nextCurrency);
+      setError(null);
       return;
     }
 
@@ -117,45 +152,29 @@ const useCurrencyConverter = () => {
     setError(null);
 
     try {
-      const response = await fetch(
-        `https://currency-conversion-and-exchange-rates.p.rapidapi.com/convert?from=EUR&to=PHP&amount=1`,
-        {
-          headers: {
-            "x-rapidapi-key": import.meta.env.VITE_RAPIDAPI_KEY,
-            "x-rapidapi-host":
-              "currency-conversion-and-exchange-rates.p.rapidapi.com",
-          },
-        },
-      );
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      const data = await response.json();
-
-      const rate = data?.result ?? data?.info?.rate ?? data?.rates?.PHP;
-
-      if (!rate) throw new Error("Invalid API response");
-
-      setRate(rate);
-      setCurrency("PHP");
+      const rate = await fetchRate(nextCurrency);
+      setRates((prev) => ({ ...prev, [nextCurrency]: rate }));
+      setCurrency(nextCurrency);
     } catch (error) {
       console.log("Currency conversion error:", error);
       setError("Conversion unavailable. Showing EUR.");
       setCurrency("EUR");
-      setRate(1);
     } finally {
       setLoading(false);
     }
   };
 
   const formatPrice = (amount: number): string => {
+    const rate = rates[currency] || 1;
     const converted = Math.round(amount * rate);
-    if (currency === "PHP") {
-      return `₱${converted.toLocaleString()}`;
-    }
-    return `€${amount.toLocaleString()}`;
+
+    const symbols: Record<Currency, string> = {
+      EUR: "€",
+      PHP: "₱",
+      USD: "$",
+    };
+
+    return `${symbols[currency]}${converted.toLocaleString()}`;
   };
 
   return { currency, toggleCurrency, formatPrice, loading, error };
@@ -178,26 +197,37 @@ const CurrencyToggle: React.FC<{
   currency: Currency;
   onToggle: () => void;
   loading: boolean;
-}> = ({ currency, onToggle, loading }) => (
-  <div className="currency-toggle-wrapper">
-    <button
-      className={`currency-toggle ${loading ? "loading" : ""}`}
-      onClick={onToggle}
-      disabled={loading}
-      aria-label={`Currency: ${currency}`}
-    >
-      <div className={`toggle-slider ${currency === "PHP" ? "right" : ""}`} />
-      <span className={`toggle-option ${currency === "EUR" ? "active" : ""}`}>
-        {loading && currency === "PHP" ? <span className="spinner" /> : null}
-        EUR
-      </span>
-      <span className={`toggle-option ${currency === "PHP" ? "active" : ""}`}>
-        {loading && currency === "EUR" ? <span className="spinner" /> : null}
-        PHP
-      </span>
-    </button>
-  </div>
-);
+}> = ({ currency, onToggle, loading }) => {
+  const cycle: Currency[] = ["EUR", "PHP", "USD"];
+  const currentIndex = cycle.indexOf(currency);
+
+  return (
+    <div className="currency-toggle-wrapper">
+      <button
+        className={`currency-toggle ${loading ? "loading" : ""}`}
+        onClick={onToggle}
+        disabled={loading}
+        aria-label={`Currency: ${currency}`}
+      >
+        <div
+          className="toggle-slider"
+          style={{
+            left: `${(currentIndex / (cycle.length - 1)) * 66.66}%`,
+          }}
+        />
+        {cycle.map((curr) => (
+          <span
+            key={curr}
+            className={`toggle-option ${currency === curr ? "active" : ""}`}
+          >
+            {loading && currency !== curr ? <span className="spinner" /> : null}
+            {curr}
+          </span>
+        ))}
+      </button>
+    </div>
+  );
+};
 
 const PricingCard: React.FC<{
   pkg: Package;

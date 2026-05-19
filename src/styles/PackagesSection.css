@@ -62,7 +62,7 @@
   position: absolute;
   top: 4px;
   bottom: 4px;
-  width: calc(50% - 4px);
+  width: calc(33.33% - 8px);
   background: white;
   border-radius: var(--radius-lg, 10px);
   box-shadow:
@@ -70,6 +70,7 @@
     0 1px 2px rgba(0, 0, 0, 0.04);
   transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   z-index: 0;
+  margin-left: 4px;
 }
 
 .toggle-slider.right {
