@@ -18,13 +18,16 @@ interface FormData {
 
 const interestOptions = [
   { value: "", label: "Select your interest" },
-  { value: "proposal", label: "Custom Proposal Request" },
-  { value: "investment", label: "Investment Opportunities" },
-  { value: "partnership", label: "Strategic Partnership" },
-  { value: "consulting", label: "Business Consulting" },
-  { value: "technology", label: "Technology Solutions" },
-  { value: "media", label: "Media & Content" },
-  { value: "call", label: "Discovery Call Booking" },
+  { value: "virtual-assistant-services", label: "Virtual Assistant Services" },
+  { value: "executive-assistant-support", label: "Executive Assistant Support" },
+  { value: "operations-management", label: "Operations Management" },
+  { value: "project-management", label: "Project Management" },
+  { value: "customer-support", label: "Customer Support" },
+  { value: "lead-generation", label: "Lead Generation" },
+  { value: "social-media-management", label: "Social Media Management" },
+  { value: "bookkeeping-support", label: "Bookkeeping Support" },
+  { value: "custom-staffing-solution", label: "Custom Staffing Solution" },
+  { value: "discovery-call", label: "Discovery Call" },
   { value: "other", label: "Other" },
 ];
 
