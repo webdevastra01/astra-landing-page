@@ -152,11 +152,22 @@ export default function LeadForm({ isOpen, onClose }: LeadFormProps) {
         ) : (
           <>
             <div className="lead-form__header">
-              <h3 id="lead-form-title">Partner With Astra</h3>
-              <p>
-                Fill out the form below and our team will reach out to discuss
-                how we can work together.
-              </p>
+              <span className="lead-form__eyebrow">Get Started</span>
+              <h3 id="lead-form-title" className="lead-form__title">
+                Scale your Business with{" "}
+                <span className="highlight">Astra</span>
+              </h3>
+              <div className="lead-form__description">
+                <p>
+                  From executive assistance to operations management, we provide
+                  skilled virtual professionals who help businesses improve
+                  efficiency, reduce workload, and focus on growth.
+                </p>
+                <p className="lead-form__cta-text">
+                  Fill out the form below and our team will reach out to discuss
+                  how we can work together.
+                </p>
+              </div>
             </div>
 
             <form className="lead-form" onSubmit={handleSubmit} noValidate>
