@@ -88,7 +88,7 @@ export default function Navbar() {
                 setFormOpen(true);
               }}
             >
-              Partner With Astra
+              Scale your Business with Astra
             </button>
           </nav>
         </div>
