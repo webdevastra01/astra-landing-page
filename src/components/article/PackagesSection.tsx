@@ -27,7 +27,7 @@ const packages: Package[] = [
   {
     id: "starter",
     name: "Starter",
-    description: "Best for testing offshore",
+    description: "Perfect for solo entrepreneurs and small businesses",
     priceRange: "€900 – €1,200",
     priceMin: 900,
     priceMax: 1200,
@@ -41,7 +41,7 @@ const packages: Package[] = [
   {
     id: "growth",
     name: "Growth",
-    description: "Sales and lead generation team",
+    description: "Designed for growing businesses that need consistent support",
     priceRange: "€2,000 – €3,500",
     priceMin: 2000,
     priceMax: 3500,
@@ -57,7 +57,7 @@ const packages: Package[] = [
   {
     id: "business",
     name: "Business Support",
-    description: "Back office and operations",
+    description: "Ideal for established businesses seeking operational efficiency",
     priceRange: "€2,500 – €4,500",
     priceMin: 2500,
     priceMax: 4500,
@@ -72,7 +72,7 @@ const packages: Package[] = [
   {
     id: "scale",
     name: "Scale",
-    description: "Full execution team",
+    description: "Built for companies ready to delegate entire departments",
     priceRange: "€5,000 – €9,000",
     priceMin: 5000,
     priceMax: 9000,
